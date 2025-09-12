@@ -1,1 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Datapro Automation — Comunidad y Recursos</title>
+  <meta name="description" content="Máquinas virtuales, softwares actualizados y cursos de automatización industrial. Comunidad abierta: Siemens, Allen-Bradley, ABB, Delta, Fanuc, Schneider." />
+  <link rel="icon" href="assets/img/favicon.ico">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <!-- Header + Nav -->
+  <header class="site-header">
+    <div class="wrapper">
+      <a href="#inicio" class="brand">Datapro Automation</a>
+      <nav class="nav">
+        <a href="#vms">Máquinas</a>
+        <a href="#software">Softwares</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#comunidad">Comunidad</a>
+        <a href="#acerca">Acerca</a>
+      </nav>
+    </div>
+  </header>
 
+  <!-- Hero / Inicio -->
+  <section id="inicio" class="hero">
+    <div class="wrapper">
+      <h1>Comunidad de Automatización & Electrónica</h1>
+      <p>Máquinas virtuales, softwares actualizados y cursos especializados. Todo en un solo lugar, gratis y sin registro.</p>
+
+      <div class="search-bar">
+        <input id="globalSearch" type="search" placeholder="Buscar (ej: siemens, tia, scada, fanuc)..." aria-label="Buscar en toda la página">
+        <select id="brandFilter" aria-label="Filtrar por marca">
+          <option value="">Todas las marcas</option>
+        </select>
+        <button id="clearFilters" class="btn-outline">Limpiar</button>
+      </div>
+
+      <div class="quick-links">
+        <a href="#vms" class="btn">Ver Máquinas Virtuales</a>
+        <a href="#software" class="btn">Ver Softwares</a>
+        <a href="#recursos" class="btn">Ver Cursos/Recursos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Máquinas Virtuales -->
+  <section id="vms" class="section">
+    <div class="wrapper">
+      <h2>Máquinas virtuales</h2>
+      <p class="muted">Siemens, Allen-Bradley, ABB, Delta, Fanuc, Schneider…</p>
+      <div id="vmsCounter" class="counter"></div>
+      <div id="vmsGrid" class="grid"></div>
+    </div>
+  </section>
+
+  <!-- Softwares -->
+  <section id="software" class="section alt">
+    <div class="wrapper">
+      <h2>Softwares actualizados</h2>
+      <p class="muted">Versiones, notas, sistemas compatibles y enlaces oficiales.</p>
+      <div id="softCounter" class="counter"></div>
+      <div id="softGrid" class="grid"></div>
+    </div>
+  </section>
+
+  <!-- Recursos / Cursos -->
+  <section id="recursos" class="section">
+    <div class="wrapper">
+      <h2>Recursos y cursos</h2>
+      <p class="muted">Control & Electrónica / Automatización industrial.</p>
+      <div id="resCounter" class="counter"></div>
+      <div id="resGrid" class="grid"></div>
+    </div>
+  </section>
+
+  <!-- Comunidad -->
+  <section id="comunidad" class="section alt">
+    <div class="wrapper">
+      <h2>Comunidad</h2>
+      <div class="grid small">
+        <a class="card btn" href="https://t.me/..." target="_blank" rel="noopener">Telegram</a>
+        <a class="card btn" href="https://wa.me/51TU_NUMERO" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="card btn" href="https://youtube.com/@..." target="_blank" rel="noopener">YouTube</a>
+      </div>
+      <details class="faq">
+        <summary>¿Cómo descargo y verifico una VM grande?</summary>
+        <p>Usa compresión 7z por partes y verifica el hash SHA-256 si está disponible. Requiere SSD y suficiente RAM.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Acerca -->
+  <section id="acerca" class="section">
+    <div class="wrapper">
+      <h2>Acerca</h2>
+      <p>Portal educativo y comunitario. Respeta licencias de software y propiedad intelectual; aquí solo se comparten enlaces.</p>
+      <p class="muted">© 2025 Datapro Automation</p>
+    </div>
+  </section>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
