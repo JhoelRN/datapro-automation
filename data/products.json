@@ -1,30 +1,34 @@
 [
     {
-        "id": "vm-siemens-tia-v17",
+        "id": "vm-siemens 8.0",
         "category": "vm",
         "brand": "Siemens",
-        "title": "VM Siemens TIA Portal V17",
-        "price": 89,
+        "title": "VM Siemens TIA Portal V19",
+        "price": 12,
         "currency": "USD",
         "image": "assets/img/vms/siemens-tia-v17.jpg",
         "images": [
-            "assets/img/vms/siemens-tia-v17.jpg",
-            "assets/img/vms/siemens-tia-v17-2.jpg",
-            "assets/img/vms/siemens-tia-v17-3.jpg"
+            "assets/img/vms/MV Siemens 8.0.png",
+            "assets/img/vms/MV Siemens 8.0 (entorno 1).png",
+            "assets/img/vms/MV Siemens 8.0 (entorno 2).png",
+            "assets/img/vms/MV Siemens 8.0 (entorno 3).png",
+            "assets/img/vms/MV Siemens 8.0 (entorno 4).png",
+            "assets/img/vms/MV Siemens 8.0 (entorno 5).png"
         ],
-        "short": "Imagen lista con TIA Portal V17 + PLCSIM + WinCC RT Advanced para prácticas de PLC y HMI.",
+        "short": "Imagen lista con TIA Portal V19 + PLCSIM + WinCC RT Advanced para prácticas de PLC y HMI.",
         "specs": [
             "Plataforma: VMware",
-            "Tamaño aprox: 85 GB",
+            "Tamaño aprox: 150 GB",
             "RAM recomendada: 16 GB",
-            "Incluye ejemplos de proyectos"
+            "Máquina Virtual Actualizada 2025"
         ],
         "tags": [
             "siemens",
             "tia",
             "plc",
             "wincc",
-            "hmi"
+            "hmi",
+            "2025"
         ],
         "badge": "new"
     },
