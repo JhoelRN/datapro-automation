@@ -229,7 +229,7 @@ function price(n, cur) {
   }
 
   // CTA WhatsApp (barra separada)
-  const msg = `Hola Jhoel, estoy interesado en *"${p.title}"* y necesito que me comparta mayor información y procedimiento.`;
+  const msg = `Hola Jhoel, estoy interesado en *${p.title}* y necesito que me comparta mayor información y procedimiento.`;
   const cta = document.getElementById('product-cta');
   if (cta) {
     cta.hidden = false;
