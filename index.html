@@ -18,13 +18,13 @@
 
 </head>
 
-<body class="theme-slate">
+<body class="theme-slate" style="overflow-x:hidden;">
 
 
     <!-- Header -->
     <header class="header">
-        <div class="container header-row">
-            <a class="brand" href="./">
+        <div class="container header-row" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <a class="brand" href="./" style="flex:0 0 auto;">
                 <img src="assets/img/logo.svg" alt="DTP Automation" width="36" height="36" />
                 <div class="brand-text">
                     <strong>DTP</strong> <em>Automation</em>
@@ -32,20 +32,20 @@
             </a>
 
             <!-- Buscador principal -->
-            <div class="searchbar">
-                <select id="categoryFilter" aria-label="Categoría">
+            <div class="searchbar" style="display:flex;align-items:center;gap:8px;flex:1 1 420px;min-width:220px;">
+                <select id="categoryFilter" aria-label="Categoría" style="flex:0 1 150px;min-width:120px;">
                     <option value="">Todas</option>
                     <option value="vm">Máquinas Virtuales</option>
                     <option value="software">Softwares</option>
                     <option value="curso">Cursos</option>
                     <option value="servicio">Servicios</option>
                 </select>
-                <input id="searchInput" type="search"
-                    placeholder="Busca en nuestro catálogo (Siemens, TIA V17, FANUC…)" />
-                <button id="searchBtn" class="btn">BUSCAR</button>
+                <input id="searchInput" type="search" placeholder="Busca en nuestro catálogo (Siemens, TIA V17, FANUC…)"
+                    style="flex:1 1 auto;min-width:120px;width:100%;" />
+                <button id="searchBtn" class="btn" style="flex:0 0 auto;white-space:nowrap;">BUSCAR</button>
             </div>
 
-            <div class="social">
+            <div class="social" style="display:flex;gap:8px;flex:0 0 auto;">
                 <a class="social-btn is-yt" href="https://www.youtube.com/LEVEM" target="_blank" rel="noopener"
                     aria-label="YouTube" title="YouTube">
                     <img src="assets/img/social/youtube.svg" alt="YouTube" width="24" height="24">
@@ -60,7 +60,8 @@
 
         <!-- Barra de categorías (roja) -->
         <nav class="nav-red">
-            <div class="container nav-row">
+            <div class="container nav-row"
+                style="display:flex;gap:8px;flex-wrap:nowrap;white-space:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;">
                 <a href="./index.html" class="active">Inicio</a>
                 <a href="#" data-cat="vm" class="cat-link">Máquinas Virtuales</a>
                 <a href="#" data-cat="software" class="cat-link">Softwares</a>
@@ -153,14 +154,6 @@
                     </a>
                 </div>
 
-
-
-
-
-
-
-
-
             </div>
 
             <div class="promo-video">
@@ -228,15 +221,6 @@
             </ul>
         </div>
     </section>
-
-
-
-
-
-
-
-
-
 
     <footer class="footer">
         <div class="container">
