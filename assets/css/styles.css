@@ -919,10 +919,12 @@ a:hover {
 }
 
 .product .media {
+  margin-top: 12px;
   background: #f1f5f9;
   border: 1px solid var(--border);
   border-radius: 12px;
-  overflow: hidden
+  overflow: hidden;
+  margin-bottom: 12px
 }
 
 .product .media img {
@@ -932,12 +934,16 @@ a:hover {
 }
 
 .product .meta {
+  margin-top: 12px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
+  margin-bottom: 12px;
   box-shadow: 0 6px 14px rgba(15, 23, 42, .05)
 }
+
+
 
 .product h1 {
   margin: .2rem 0
@@ -1191,20 +1197,6 @@ a:hover {
   --price: var(--brand-600);
 }
 
-/* (opcional) modo oscuro coherente con cualquiera de los temas */
-@media (prefers-color-scheme: dark) {
-
-  .theme-slate,
-  .theme-warm {
-    --bg: #0b1220;
-    --surface: #0f172a;
-    --text: #e6eaf5;
-    --muted: #b6c0d4;
-    --border: #1f2a44;
-    --link: #dbe4ff;
-  }
-}
-
 
 /* --- Tokens por si faltan --- */
 :root {
@@ -1271,3 +1263,143 @@ a:hover {
   outline: 3px solid rgba(148, 163, 184, .8);
   outline-offset: 2px;
 }
+
+
+
+
+/* Barra CTA separada del contenido */
+.cta-bar {
+  border-top: 1px solid var(--border);
+  background: #fff;
+}
+
+.cta-inner {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 12px 0;
+}
+
+/* En móvil la CTA queda pegada abajo (tipo app) */
+@media (max-width: 900px) {
+  .cta-bar {
+    position: sticky;
+    bottom: 0;
+    z-index: 50;
+    box-shadow: 0 -8px 24px rgba(15, 23, 42, .10);
+  }
+
+  .cta-inner {
+    justify-content: center;
+    padding: 10px 0;
+  }
+}
+
+/* Botón WhatsApp coherente con el resto */
+:root {
+  --wa-green: #25D366;
+  --wa-dark: #128C7E;
+}
+
+.btn {
+  border-radius: 10px;
+  font-weight: 700;
+  padding: 10px 16px;
+}
+
+.btn-wa {
+  background: linear-gradient(180deg, var(--wa-green), #1ebe57);
+  border: 0;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(18, 140, 126, .25);
+}
+
+.btn-wa:hover {
+  filter: brightness(.95);
+}
+
+
+
+
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-wa .ico-wa {
+  width: 30px;
+  height: 30px;
+  color: #18a105;
+}
+
+
+
+
+
+
+
+/* ===== Estilo "pro" para características del producto ===== */
+/* ===== Características del producto (lista pro) ===== */
+.product .meta .price {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--price);
+  letter-spacing: .2px;
+  margin: .4rem 0 .6rem;
+}
+
+/* Lista base */
+.specs-list {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specs-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, .03);
+  line-height: 1.45;
+}
+
+/* Icono de check (SVG como máscara, nítido y ligero) */
+.specs-list .ico {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin-top: 2px;
+  background: var(--brand-600);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23000' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/></svg>") no-repeat center / contain;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23000' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/></svg>") no-repeat center / contain;
+}
+
+.specs-list .txt {
+  color: var(--text)
+}
+
+/* Colores por tipo (se aplican desde JS) */
+.specs-list li.is-free .ico {
+  background: #16a34a
+}
+
+/* extra / gratis */
+.specs-list li.is-note .ico {
+  background: #f59e0b
+}
+
+/* nota / requisito */
+.specs-list li.is-warn .ico {
+  background: #ef4444
+}
+
+/* advertencia */

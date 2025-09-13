@@ -1,3 +1,5 @@
+/* assets/js/product.js */
+
 const $ = (s, c = document) => c.querySelector(s);
 const WA_NUMBER = '51980790737'; // +51 980 790 737
 
@@ -16,7 +18,7 @@ const DEMO_PRODUCTS = [
       "Plataforma: VMware",
       "Tamaño aprox: 85 GB",
       "RAM recomendada: 16 GB",
-      "Incluye ejemplos de proyectos"
+      "+ Incluye ejemplos de proyectos"
     ],
     tags: ["siemens", "tia", "plc", "wincc", "hmi"]
   }
@@ -33,19 +35,48 @@ async function loadProducts() {
   }
 }
 
-function labelCat(c) { return ({ vm: 'Máquina Virtual', software: 'Software', curso: 'Curso', servicio: 'Servicio' })[c] || 'Producto'; }
-function renderSpecs(list) {
-  if (!Array.isArray(list) || !list.length) {
-    return `<ul class="specs">
-      <li>Característica 1 (edítame)</li>
-      <li>Característica 2 (edítame)</li>
-      <li>Característica 3 (edítame)</li>
-    </ul>`;
-  }
-  return `<ul class="specs">${list.map(x => `<li>${x}</li>`).join('')}</ul>`;
+function labelCat(c) {
+  return ({ vm: 'Máquina Virtual', software: 'Software', curso: 'Curso', servicio: 'Servicio' })[c] || 'Producto';
 }
-function renderTags(tags) { if (!tags?.length) return ''; return tags.map(t => `<span class="badge">${t}</span>`).join(' '); }
-function price(n, cur) { if (n == null) return '—'; return cur === 'USD' ? `$ ${Number(n).toLocaleString('es-PE')}` : `S/ ${Number(n).toLocaleString('es-PE')}`; }
+
+// Escapar texto por seguridad (evita HTML inesperado)
+const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({
+  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+}[m]));
+
+// Lista de características en estilo pro (icono + color por tipo)
+function renderSpecs(list) {
+  if (!Array.isArray(list) || !list.length) return '';
+
+  const items = list.map(raw => {
+    let s = String(raw || '').trim();
+    let cls = '';
+
+    // Reglas simples:
+    // + prefijo => extra/gratis (verde)
+    if (s.startsWith('+')) { cls = 'is-free'; s = s.replace(/^\+\s*/, ''); }
+    // palabras clave => nota/requisito (ámbar)
+    else if (/(recomendad|minim|requisit|nota)/i.test(s)) { cls = 'is-note'; }
+    // advertencias (rojo)
+    else if (/(advert|cuidado|no compatible)/i.test(s)) { cls = 'is-warn'; }
+
+    return `<li class="${cls}"><span class="ico"></span><span class="txt">${esc(s)}</span></li>`;
+  }).join('');
+
+  return `<ul class="specs-list">${items}</ul>`;
+}
+
+function renderTags(tags) {
+  if (!tags?.length) return '';
+  return tags.map(t => `<span class="badge">${esc(t)}</span>`).join(' ');
+}
+
+function price(n, cur) {
+  if (n == null) return '—';
+  return cur === 'USD'
+    ? `$ ${Number(n).toLocaleString('es-PE')}`
+    : `S/ ${Number(n).toLocaleString('es-PE')}`;
+}
 
 (async function () {
   const host = $('#product');
@@ -60,27 +91,25 @@ function price(n, cur) { if (n == null) return '—'; return cur === 'USD' ? `$ 
 
   document.title = `${p.title} — DTP Automation`;
 
-
   const badgeHTML = p.badge
     ? `<span class="badge-flag ${badgeClass(p.badge)}">${badgeText(p.badge)}</span>`
     : '';
 
-
   // Render
   host.innerHTML = `
     <div class="media">
-      <img src="${p.image || 'assets/img/placeholder.jpg'}" alt="${p.title}"
+      <img src="${esc(p.image || 'assets/img/placeholder.jpg')}" alt="${esc(p.title)}"
            onerror="this.src='assets/img/placeholder.jpg'"/>
-      ${badgeHTML}  <!-- ★ -->
+      ${badgeHTML}
     </div>
     <div class="meta">
-      <h1>${p.title}</h1>
-      <div class="muted">${labelCat(p.category)}${p.brand ? ' · ' + p.brand : ''}</div>
-      <p class="price" style="font-size:1.4rem;margin:.4rem 0 1rem">${price(p.price, p.currency || 'PEN')}</p>
-      <p>${p.short || 'Descripción breve del producto (edítame con tu texto real: qué incluye, a quién va dirigido, requisitos, etc.).'}</p>
+      <h1>${esc(p.title)}</h1>
+      <div class="muted">${esc(labelCat(p.category))}${p.brand ? ' · ' + esc(p.brand) : ''}</div>
+      <div class="price">${price(p.price, p.currency || 'PEN')}</div>
+
+      <p>${esc(p.short || 'Descripción breve del producto (edítame con tu texto real: qué incluye, a quién va dirigido, requisitos, etc.).')}</p>
       ${renderSpecs(p.specs)}
       <div style="margin-top:12px">${renderTags(p.tags)}</div>
-      <a class="btn full" id="waBtn" target="_blank" rel="noopener">Comprar por WhatsApp</a>
     </div>
   `;
 
@@ -99,8 +128,12 @@ function price(n, cur) { if (n == null) return '—'; return cur === 'USD' ? `$ 
     return 'NUEVO';
   }
 
-  // Botón de WhatsApp con mensaje prellenado
+  // Mensaje y enlace de WhatsApp (CTA fuera del bloque .meta)
   const msg = `Hola DTP Automation, necesito más información de la "${p.title}" y apoyo en el procedimiento.`;
-  $('#waBtn').href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+  const cta = document.getElementById('product-cta');
+  if (cta) {
+    cta.hidden = false;
+    const a = cta.querySelector('#waCta');
+    if (a) a.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+  }
 })();
-
