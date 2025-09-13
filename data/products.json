@@ -6,7 +6,7 @@
         "title": "VM Siemens TIA Portal V19",
         "price": 12,
         "currency": "USD",
-        "image": "assets/img/vms/MV Siemens 8.0.png",
+        "image": "assets/img/vms/MV Siemens 8.0 (entorno 1).PNG",
         "images": [
             "assets/img/vms/MV Siemens 8.0.png",
             "assets/img/vms/MV Siemens 8.0 (entorno 1).PNG",
@@ -20,14 +20,11 @@
             "Plataforma: VMware",
             "Tamaño aprox: 150 GB",
             "RAM recomendada: 16 GB",
-            "Máquina Virtual Actualizada *2025*"
+            "Máquina Virtual Actualizada (2025)"
         ],
         "tags": [
             "siemens",
-            "tia",
-            "plc",
-            "wincc",
-            "hmi",
+            "actualizado",
             "2025"
         ],
         "badge": "new"
