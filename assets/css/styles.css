@@ -1403,3 +1403,170 @@ a:hover {
 }
 
 /* advertencia */
+
+
+
+
+
+
+/* ==== Dinamismo de imagen: zoom + galería ==== */
+.media {
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+.media-main {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0b0f19
+}
+
+.media-main img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform .35s ease
+}
+
+.media-main:hover img {
+  transform: scale(1.06)
+}
+
+/* zoom suave */
+.media-main {
+  cursor: zoom-in
+}
+
+/* Thumbnails */
+.thumbs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap
+}
+
+.thumb {
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+  cursor: pointer
+}
+
+.thumb img {
+  width: 84px;
+  height: 56px;
+  object-fit: cover;
+  display: block
+}
+
+.thumb.is-active {
+  outline: 2px solid var(--brand-600);
+  border-color: transparent
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 16, 27, .86);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999
+}
+
+.lightbox[hidden] {
+  display: none
+}
+
+.lightbox img {
+  max-width: 92vw;
+  max-height: 88vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .45)
+}
+
+.lb-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  border: 0;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .25)
+}
+
+body.no-scroll {
+  overflow: hidden
+}
+
+
+
+
+
+/* Flechas y contador del carrusel */
+.media-main {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0b0f19
+}
+
+.media-main img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform .35s ease
+}
+
+.media-main:hover img {
+  transform: scale(1.06)
+}
+
+.media-main .nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  background: rgba(15, 23, 42, .55);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .25);
+}
+
+.media-main .nav.prev {
+  left: 10px;
+}
+
+.media-main .nav.next {
+  right: 10px;
+}
+
+.media-main .pager {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  background: rgba(15, 23, 42, .55);
+  color: #fff;
+  font-size: .78rem;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
