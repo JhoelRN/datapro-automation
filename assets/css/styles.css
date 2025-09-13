@@ -1570,3 +1570,150 @@ body.no-scroll {
   padding: 4px 8px;
   border-radius: 8px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Franja */
+.pay-strip {
+  margin-top: 12px;
+  background: white;
+  /* Cambiado a blanco */
+  color: #272726;
+  /* Color de texto oscuro para que se lea */
+  border-radius: 0px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .08);
+  margin-bottom: 18px;
+
+  /* Sombra más sutil */
+}
+
+.pay-wrap {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+  padding: 18px 16px;
+}
+
+.pay-copy h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  font-weight: 800
+}
+
+.pay-copy p {
+  margin: 0;
+  opacity: .9;
+  font-size: .92rem
+}
+
+/* Logos */
+.pay-logos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap
+}
+
+.pay-logo {
+  height: 32px;
+  display: flex;
+  align-items: center
+}
+
+.pay-logo img {
+  max-height: 50px;
+  /* ← límite global */
+  max-width: 160px;
+  /* ← por si alguno es muy ancho */
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: grayscale(1) brightness(1.15) contrast(1.05);
+  opacity: .95;
+  transition: transform .2s ease, filter .2s ease, opacity .2s ease;
+}
+
+.pay-logo:hover img {
+  transform: translateY(-2px);
+  filter: none;
+  opacity: 1
+}
+
+/* Ajustes finos por marca (algunas son más altas/bajas) */
+.pay-logo--paypal img {
+  max-height: 30px;
+}
+
+.pay-logo--mp img {
+  max-height: 50px;
+}
+
+.pay-logo--bcp img {
+  max-height: 22px;
+}
+
+.pay-logo--yape img {
+  max-height: 24px;
+}
+
+@media (max-width:900px) {
+  .pay-wrap {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    text-align: center
+  }
+
+  .pay-logos {
+    justify-content: center
+  }
+}
+
+
+/* === Logos de métodos de pago: color por defecto, highlight en hover === */
+.pay-logo img {
+  max-height: 50px;
+  max-width: 120px;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  /* color real por defecto */
+  filter: none !important;
+  opacity: 1;
+  transition: filter .2s ease, transform .2s ease;
+}
+
+.pay-logo:hover img {
+  /* resalte suave al pasar el mouse */
+  filter: brightness(1.15) contrast(1.05) saturate(1.05) drop-shadow(0 2px 6px rgba(0, 0, 0, .18));
+  transform: translateY(-2px) scale(1.03);
+}
