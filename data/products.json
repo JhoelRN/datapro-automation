@@ -10,17 +10,17 @@
         "images": [
             "assets/img/vms/MV Siemens 8.0.png",
             "assets/img/vms/MV Siemens 8.0 (entorno 1).PNG",
-            "assets/img/vms/MV Siemens 8.0 (entorno 2).png",
-            "assets/img/vms/MV Siemens 8.0 (entorno 3).png",
-            "assets/img/vms/MV Siemens 8.0 (entorno 4).png",
-            "assets/img/vms/MV Siemens 8.0 (entorno 5).png"
+            "assets/img/vms/MV Siemens 8.0 (entorno 2).PNG",
+            "assets/img/vms/MV Siemens 8.0 (entorno 3).PNG",
+            "assets/img/vms/MV Siemens 8.0 (entorno 4).PNG",
+            "assets/img/vms/MV Siemens 8.0 (entorno 5).PNG"
         ],
         "short": "Imagen lista con TIA Portal V19 + PLCSIM + WinCC RT Advanced para prácticas de PLC y HMI.",
         "specs": [
             "Plataforma: VMware",
             "Tamaño aprox: 150 GB",
             "RAM recomendada: 16 GB",
-            "Máquina Virtual Actualizada 2025"
+            "Máquina Virtual Actualizada *2025*"
         ],
         "tags": [
             "siemens",
