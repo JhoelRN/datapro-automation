@@ -1,105 +1,206 @@
 <!doctype html>
 <html lang="es">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Datapro Automation — Comunidad y Recursos</title>
-  <meta name="description" content="Máquinas virtuales, softwares actualizados y cursos de automatización industrial. Comunidad abierta: Siemens, Allen-Bradley, ABB, Delta, Fanuc, Schneider." />
-  <link rel="icon" href="assets/img/favicon.ico">
-  <link rel="stylesheet" href="assets/css/styles.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>DTP Automation — Automatización Industrial</title>
+    <meta name="description" content="Máquinas virtuales, software, cursos y servicios de automatización industrial." />
+    <link rel="icon" href="assets/img/logo.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+
+
+    <!-- Tipo de letra profesional -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+
 </head>
-<body>
-  <!-- Header + Nav -->
-  <header class="site-header">
-    <div class="wrapper">
-      <a href="#inicio" class="brand">Datapro Automation</a>
-      <nav class="nav">
-        <a href="#vms">Máquinas</a>
-        <a href="#software">Softwares</a>
-        <a href="#recursos">Recursos</a>
-        <a href="#comunidad">Comunidad</a>
-        <a href="#acerca">Acerca</a>
-      </nav>
+
+<body class="theme-slate">
+    <!-- Top info (editable) -->
+    <div class="topbar">
+        <div class="container">
+            <span>🕘 Lunes a Sábado 9am–6pm · 📍 Arequipa, Perú</span>
+            <span>📞 980 790 737</span>
+        </div>
     </div>
-  </header>
 
-  <!-- Hero / Inicio -->
-  <section id="inicio" class="hero">
-    <div class="wrapper">
-      <h1>Comunidad de Automatización & Electrónica</h1>
-      <p>Máquinas virtuales, softwares actualizados y cursos especializados. Todo en un solo lugar, gratis y sin registro.</p>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-row">
+            <a class="brand" href="./">
+                <img src="assets/img/logo.svg" alt="DTP Automation" width="36" height="36" />
+                <div class="brand-text">
+                    <strong>DTP</strong> <em>Automation</em>
+                </div>
+            </a>
 
-      <div class="search-bar">
-        <input id="globalSearch" type="search" placeholder="Buscar (ej: siemens, tia, scada, fanuc)..." aria-label="Buscar en toda la página">
-        <select id="brandFilter" aria-label="Filtrar por marca">
-          <option value="">Todas las marcas</option>
-        </select>
-        <button id="clearFilters" class="btn-outline">Limpiar</button>
-      </div>
+            <!-- Buscador principal -->
+            <div class="searchbar">
+                <select id="categoryFilter" aria-label="Categoría">
+                    <option value="">Todas</option>
+                    <option value="vm">Máquinas Virtuales</option>
+                    <option value="software">Softwares</option>
+                    <option value="curso">Cursos</option>
+                    <option value="servicio">Servicios</option>
+                </select>
+                <input id="searchInput" type="search"
+                    placeholder="Busca en nuestro catálogo (Siemens, TIA V17, FANUC…)" />
+                <button id="searchBtn" class="btn">BUSCAR</button>
+            </div>
 
-      <div class="quick-links">
-        <a href="#vms" class="btn">Ver Máquinas Virtuales</a>
-        <a href="#software" class="btn">Ver Softwares</a>
-        <a href="#recursos" class="btn">Ver Cursos/Recursos</a>
-      </div>
+            <div class="social">
+                <a href="#" aria-label="YouTube">▶</a>
+                <a href="#" aria-label="Facebook">f</a>
+            </div>
+        </div>
+
+        <!-- Barra de categorías (roja) -->
+        <nav class="nav-red">
+            <div class="container nav-row">
+                <a href="./index.html" class="active">Inicio</a>
+                <a href="#" data-cat="vm" class="cat-link">Máquinas Virtuales</a>
+                <a href="#" data-cat="software" class="cat-link">Softwares</a>
+                <a href="#" data-cat="curso" class="cat-link">Cursos</a>
+                <a href="#" data-cat="servicio" class="cat-link">Servicios</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Migas / texto editable -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <span>Inicio</span> / <span>Catálogo</span>
+        </div>
     </div>
-  </section>
 
-  <!-- Máquinas Virtuales -->
-  <section id="vms" class="section">
-    <div class="wrapper">
-      <h2>Máquinas virtuales</h2>
-      <p class="muted">Siemens, Allen-Bradley, ABB, Delta, Fanuc, Schneider…</p>
-      <div id="vmsCounter" class="counter"></div>
-      <div id="vmsGrid" class="grid"></div>
-    </div>
-  </section>
+    <!-- Catálogo -->
+    <main class="container">
+        <h1 class="title">Catálogo</h1>
+        <p class="subtle">Explora nuestras soluciones en automatización industrial. Productos digitales, soporte y
+            formación.</p>
 
-  <!-- Softwares -->
-  <section id="software" class="section alt">
-    <div class="wrapper">
-      <h2>Softwares actualizados</h2>
-      <p class="muted">Versiones, notas, sistemas compatibles y enlaces oficiales.</p>
-      <div id="softCounter" class="counter"></div>
-      <div id="softGrid" class="grid"></div>
-    </div>
-  </section>
+        <section id="grid" class="grid"></section>
 
-  <!-- Recursos / Cursos -->
-  <section id="recursos" class="section">
-    <div class="wrapper">
-      <h2>Recursos y cursos</h2>
-      <p class="muted">Control & Electrónica / Automatización industrial.</p>
-      <div id="resCounter" class="counter"></div>
-      <div id="resGrid" class="grid"></div>
-    </div>
-  </section>
+        <div class="empty" id="emptyMsg" hidden>
+            <p>No encontramos resultados. Prueba con otras palabras o limpia los filtros.</p>
+            <button id="clearAll" class="btn ghost">Limpiar filtros</button>
+        </div>
+    </main>
 
-  <!-- Comunidad -->
-  <section id="comunidad" class="section alt">
-    <div class="wrapper">
-      <h2>Comunidad</h2>
-      <div class="grid small">
-        <a class="card btn" href="https://t.me/..." target="_blank" rel="noopener">Telegram</a>
-        <a class="card btn" href="https://wa.me/51TU_NUMERO" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="card btn" href="https://youtube.com/@..." target="_blank" rel="noopener">YouTube</a>
-      </div>
-      <details class="faq">
-        <summary>¿Cómo descargo y verifico una VM grande?</summary>
-        <p>Usa compresión 7z por partes y verifica el hash SHA-256 si está disponible. Requiere SSD y suficiente RAM.</p>
-      </details>
-    </div>
-  </section>
 
-  <!-- Acerca -->
-  <section id="acerca" class="section">
-    <div class="wrapper">
-      <h2>Acerca</h2>
-      <p>Portal educativo y comunitario. Respeta licencias de software y propiedad intelectual; aquí solo se comparten enlaces.</p>
-      <p class="muted">© 2025 Datapro Automation</p>
-    </div>
-  </section>
+    <!-- PROMO + VIDEO (editable) -->
+    <section class="promo">
+        <div class="container promo-grid">
+            <div class="promo-copy">
+                <h2>¡Visita DTP Automation!</h2>
+                <p>
+                    Te acompañamos en proyectos de automatización industrial: simulación con máquinas
+                    virtuales, instalación de software y formación práctica.
+                    <br><small>(Edita este texto a lo que necesites)</small>
+                </p>
 
-  <script src="assets/js/app.js"></script>
+                <div class="promo-social">
+                    <a href="#" class="pill yt" aria-label="YouTube">YouTube</a>
+                    <a href="#" class="pill fb" aria-label="Facebook">Facebook</a>
+                    <a class="pill wa" data-wa target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <!-- ícono WhatsApp SVG -->
+                        <svg viewBox="0 0 32 32" width="18" height="18" aria-hidden="true">
+                            <path fill="#fff"
+                                d="M19.1 17.2c-.3-.2-.7-.4-1.1-.2-.3.1-.6.6-.8.8-.1.1-.3.2-.5.1-1-.4-1.9-1-2.6-1.8-.1-.1-.1-.3.1-.5.2-.2.5-.5.5-.8 0-.3-.1-.6-.2-.9l-.4-.9c-.1-.3-.3-.6-.6-.7-.3-.1-.6 0-.9.1-.9.4-1.3 1.5-1 2.5.3 1 .9 1.9 1.7 2.7 1 .9 2.2 1.6 3.5 2 .5.2 1.1.3 1.6.2.6-.1 1.2-.4 1.6-.9.2-.2.4-.5.5-.8.1-.3 0-.6-.2-.9l-.2-.2z" />
+                            <path fill="#fff"
+                                d="M16 3.1C9.4 3.1 4.1 8.4 4.1 15c0 2 .5 3.9 1.5 5.5L4 28l7.7-1.6c1.6.9 3.3 1.3 5.1 1.3 6.6 0 11.9-5.3 11.9-11.9S22.6 3.1 16 3.1zm0 21.3c-1.6 0-3.1-.4-4.5-1.2l-.3-.2-4.5.9.9-4.4-.2-.3c-.9-1.4-1.3-3-1.3-4.6 0-5.2 4.3-9.5 9.5-9.5s9.5 4.3 9.5 9.5-4.3 9.8-9.1 9.8z" />
+                        </svg>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="promo-video">
+                <div class="video-wrap">
+                    <!-- Reemplaza VIDEO_ID por tu video -->
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Video DTP Automation" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS (franja roja tipo tienda) -->
+    <section class="features features--xl">
+        <div class="container">
+            <ul class="features-grid">
+                <li class="feature">
+                    <span class="feature__icon" aria-hidden="true">
+                        <!-- Truck -->
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M3 7h11v7H3zM14 10h4l3 3v4h-7zM5 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm12 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"
+                                fill="none" />
+                            <path
+                                d="M3 7h11v7H3zM14 10h4l3 3v4h-7zM5 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm12 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                        </svg>
+                    </span>
+                    <h3>Envíos a todo el Perú</h3>
+                    <p>Delivery a Lima y provincias.</p>
+                </li>
+
+                <li class="feature">
+                    <span class="feature__icon" aria-hidden="true">
+                        <!-- Wrench -->
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 7a4 4 0 1 1-4 4L4 21l-2-2 6-10a4 4 0 0 1 6-2Z" />
+                        </svg>
+                    </span>
+                    <h3>Soporte Técnico</h3>
+                    <p>Instalación y asistencia remota.</p>
+                </li>
+
+                <li class="feature">
+                    <span class="feature__icon" aria-hidden="true">
+                        <!-- Card -->
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="5" width="20" height="14" rx="2" ry="2" />
+                            <path d="M2 10h20" />
+                        </svg>
+                    </span>
+                    <h3>Pago Seguro</h3>
+                    <p>Transferencia o tarjeta.</p>
+                </li>
+
+                <li class="feature">
+                    <span class="feature__icon" aria-hidden="true">
+                        <!-- Download -->
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 3v10m0 0 4-4m-4 4-4-4M4 17h16v4H4z" />
+                        </svg>
+                    </span>
+                    <h3>Retiro / Acceso rápido</h3>
+                    <p>Link de descarga o cita remota.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 DTP Automation — Automatización & Electrónica Industrial · <a href="#">Términos</a> · <a
+                    href="#">Política</a></p>
+        </div>
+    </footer>
+
+    <script src="assets/js/index.js"></script>
 </body>
+
 </html>

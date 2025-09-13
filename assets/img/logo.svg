@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <rect width="256" height="256" rx="44" fill="#e11d2f"></rect>
+  <g fill="#ffffff" font-family="Inter,Segoe UI,Arial" font-weight="800">
+    <text x="28" y="120" font-size="44">DTP</text>
+    <text x="28" y="174" font-size="28" font-weight="700">Automation</text>
+  </g>
+</svg>

@@ -1,0 +1,125 @@
+[
+    {
+        "id": "vm-siemens-tia-v17",
+        "category": "vm",
+        "brand": "Siemens",
+        "title": "VM Siemens TIA Portal V17",
+        "price": 89,
+        "currency": "USD",
+        "image": "assets/img/vms/siemens-tia-v17.jpg",
+        "short": "Imagen lista con TIA Portal V17 + PLCSIM + WinCC RT Advanced para prácticas de PLC y HMI.",
+        "specs": [
+            "Plataforma: VMware",
+            "Tamaño aprox: 85 GB",
+            "RAM recomendada: 16 GB",
+            "Incluye ejemplos de proyectos"
+        ],
+        "tags": [
+            "siemens",
+            "tia",
+            "plc",
+            "wincc",
+            "hmi"
+        ],
+        "badge": "new"
+    },
+    {
+        "id": "vm-rockwell-studio5000-v33",
+        "category": "vm",
+        "brand": "Allen-Bradley",
+        "title": "VM Rockwell Studio 5000 V33",
+        "price": 79,
+        "currency": "USD",
+        "image": "assets/img/vms/rockwell-studio5000-v33.jpg",
+        "short": "Studio 5000 Logix Designer + FactoryTalk View ME preinstalados para CompactLogix.",
+        "specs": [
+            "Plataforma: VirtualBox",
+            "Tamaño aprox: 70 GB",
+            "RAM recomendada: 12 GB"
+        ],
+        "tags": [
+            "rockwell",
+            "studio5000",
+            "plc"
+        ],
+        "badge": "new"
+    },
+    {
+        "id": "soft-siemens-tia-v18",
+        "category": "software",
+        "brand": "Siemens",
+        "title": "TIA Portal V18 (instaladores)",
+        "price": 0,
+        "currency": "PEN",
+        "image": "assets/img/soft/tia.jpg",
+        "short": "Guía de descarga oficial y notas de versión para la edición V18.",
+        "specs": [
+            "Windows 10/11",
+            "64-bit",
+            "Licenciamiento: trial/comercial"
+        ],
+        "tags": [
+            "siemens",
+            "tia",
+            "descarga"
+        ]
+    },
+    {
+        "id": "curso-fanuc-intro",
+        "category": "curso",
+        "brand": "Fanuc",
+        "title": "Curso Intro Robótica FANUC",
+        "price": 59,
+        "currency": "USD",
+        "image": "assets/img/cursos/fanuc.jpg",
+        "short": "Fundamentos de robótica industrial: trayectorias, seguridad y práctica.",
+        "specs": [
+            "Modalidad: Online",
+            "Duración: 8 h",
+            "Nivel: Intermedio"
+        ],
+        "tags": [
+            "fanuc",
+            "robot"
+        ]
+    },
+    {
+        "id": "serv-soporte-implementacion",
+        "category": "servicio",
+        "brand": "DTP Automation",
+        "title": "Servicio de Soporte e Implementación",
+        "price": 150,
+        "currency": "USD",
+        "image": "assets/img/servicios/soporte.jpg",
+        "short": "Acompañamiento remoto para instalación, licenciamiento y pruebas.",
+        "specs": [
+            "Bolsas de horas",
+            "Stacks: Siemens / Rockwell / HMI / SCADA"
+        ],
+        "tags": [
+            "servicio",
+            "soporte"
+        ]
+    },
+    {
+        "id": "vm-siemens-v1.0",
+        "category": "vm",
+        "brand": "Siemens",
+        "title": "VM Siemens V1.0",
+        "price": 9,
+        "currency": "USD",
+        "image": "assets/img/vms/MV Siemens 1.0 entorno.jpg",
+        "short": "VM Siemens V1.0 Versión general básica para prácticas de PLC y HMI.",
+        "specs": [
+            "Sistema Operativo: Windows 7 Profesional",
+            "Plataforma: VirtualBox",
+            "Tamaño aprox: 110 GB",
+            "RAM: 8 GB"
+        ],
+        "tags": [
+            "siemens",
+            "tia portal",
+            "plc"
+        ]
+    }
+]
