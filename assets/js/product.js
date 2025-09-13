@@ -67,9 +67,23 @@ function renderSpecs(list) {
   return `<ul class="specs-list">${items}</ul>`;
 }
 
+
+
+
+
+// Usa tu archivo SVG como imagen (computadora en tags)
+const TAG_ICON_HTML = `
+  <img src="assets/img/ui/computadora.svg?v=1" class="tags-ico-img" alt="" aria-hidden="true">
+`;
+
 function renderTags(tags) {
   if (!tags?.length) return '';
-  return tags.map(t => `<span class="badge">${esc(t)}</span>`).join(' ');
+  return `
+    <div class="tags-row">
+      <span class="tags-ico">${TAG_ICON_HTML}</span>
+      ${tags.map(t => `<span class="badge">#${esc(t)}</span>`).join(' ')}
+    </div>
+  `;
 }
 
 function price(n, cur) {

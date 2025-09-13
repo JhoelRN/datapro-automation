@@ -1717,3 +1717,76 @@ body.no-scroll {
   filter: brightness(1.15) contrast(1.05) saturate(1.05) drop-shadow(0 2px 6px rgba(0, 0, 0, .18));
   transform: translateY(-2px) scale(1.03);
 }
+
+
+
+
+.tags-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tags-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tags-ico-img {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.tags-row .badge {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, .06);
+  border: 1px solid rgba(15, 23, 42, .08);
+  font-size: .82rem;
+}
+
+
+
+
+
+
+
+.feature__icon {
+  width: 40;
+  height: 40;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, .06);
+  /* si quieres chip */
+}
+
+.feature__icon-img {
+  width: 35px;
+  height: 35px;
+  display: block;
+  object-fit: contain;
+}
+
+
+.feature__icon {
+  width: 40;
+  height: 40;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, .06);
+}
+
+/* Monocromo: pinta el SVG con el color que definas en background */
+.feature__icon--mono {
+  background: var(--brand-600, #fffafb);
+  /* color del icono */
+  -webkit-mask: url('assets/img/benefits/envio.svg') no-repeat center / 22px 22px;
+  mask: url('assets/img/benefits/envio.svg') no-repeat center / 22px 22px;
+}

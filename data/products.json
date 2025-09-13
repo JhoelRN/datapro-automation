@@ -7,6 +7,11 @@
         "price": 89,
         "currency": "USD",
         "image": "assets/img/vms/siemens-tia-v17.jpg",
+        "images": [
+            "assets/img/vms/siemens-tia-v17.jpg",
+            "assets/img/vms/siemens-tia-v17-2.jpg",
+            "assets/img/vms/siemens-tia-v17-3.jpg"
+        ],
         "short": "Imagen lista con TIA Portal V17 + PLCSIM + WinCC RT Advanced para prácticas de PLC y HMI.",
         "specs": [
             "Plataforma: VMware",
