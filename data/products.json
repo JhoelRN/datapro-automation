@@ -3,7 +3,7 @@
         "id": "vm-siemens 8.0",
         "category": "vm",
         "brand": "Siemens",
-        "title": "VM Siemens TIA Portal V19",
+        "title": "VM Siemens 8.0 (TIA Portal V19)",
         "price": 12,
         "currency": "USD",
         "image": "assets/img/vms/MV Siemens 8.0 (entorno 1).PNG",
@@ -113,11 +113,19 @@
         "id": "vm-siemens-v1.0",
         "category": "vm",
         "brand": "Siemens",
-        "title": "VM Siemens V1.0",
+        "title": "VM Siemens V1.0 (Tia Portal V16)",
         "price": 9,
         "currency": "USD",
         "image": "assets/img/vms/MV Siemens 1.0 entorno.jpg",
-        "short": "VM Siemens V1.0 Versión general básica para prácticas de PLC y HMI.",
+        "images": [
+            "assets/img/vms/MV Siemens 1.0.png",
+            "assets/img/vms/MV Siemens 1.0 (entorno 1).PNG",
+            "assets/img/vms/MV Siemens 1.0 (entorno 2).jpg",
+            "assets/img/vms/MV Siemens 1.0 (entorno 3).PNG",
+            "assets/img/vms/MV Siemens 1.0 (entorno 4).PNG",
+            "assets/img/vms/MV Siemens 1.0 (entorno 5).PNG"
+        ],
+        "short": "VM Siemens V1.0 Versión general completa hasta V16 para prácticas de PLC y HMI.",
         "specs": [
             "Sistema Operativo: Windows 7 Profesional",
             "Plataforma: VirtualBox",
@@ -127,7 +135,7 @@
         "tags": [
             "siemens",
             "tia portal",
-            "plc"
+            "2022"
         ]
     }
 ]
