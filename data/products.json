@@ -4,7 +4,7 @@
         "category": "vm",
         "brand": "Siemens",
         "title": "VM Siemens 8.0 (TIA Portal V19)",
-        "price": 12,
+        "price": 13,
         "currency": "USD",
         "image": "assets/img/vms/MV Siemens 8.0 (entorno 1).PNG",
         "images": [
@@ -32,11 +32,11 @@
         "badge": "new"
     },
     {
-        "id": "vm-rockwell-studio5000-v33",
+        "id": "vm-rockwell-studio5000-v36",
         "category": "vm",
         "brand": "Allen-Bradley",
-        "title": "VM Rockwell Studio 5000 V33",
-        "price": 79,
+        "title": "VM Rockwell Studio 5000 V36",
+        "price": 13,
         "currency": "USD",
         "image": "assets/img/vms/rockwell-studio5000-v33.jpg",
         "short": "Studio 5000 Logix Designer + FactoryTalk View ME preinstalados para CompactLogix.",
@@ -48,7 +48,7 @@
         "tags": [
             "rockwell",
             "studio5000",
-            "plc"
+            "2025"
         ],
         "badge": "new"
     },
@@ -111,8 +111,7 @@
             "intouch v10",
             "2023",
             "gratis"
-        ],
-        "badge": "new"
+        ]
     },
     {
         "id": "vm-AllenBradley 1.8",
