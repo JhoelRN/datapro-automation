@@ -53,6 +53,37 @@
         "badge": "new"
     },
     {
+        "id": "vm-schneider 1.5",
+        "category": "vm",
+        "brand": "Schneider-Electric",
+        "title": "VM Schneider 1.5 (Intouch)",
+        "price": 12,
+        "currency": "USD",
+        "image": "assets/img/vms/MV Schneider 1.5 (entorno 1).png",
+        "images": [
+            "assets/img/vms/MV Schneider 1.5.png",
+            "assets/img/vms/MV Schneider 1.5 (entorno 1).PNG",
+            "assets/img/vms/MV Schneider 1.5 (entorno 2).PNG",
+            "assets/img/vms/MV Schneider 1.5 (entorno 3).PNG",
+            "assets/img/vms/MV Schneider 1.5 (entorno 4).PNG",
+            "assets/img/vms/MV Schneider 1.5 (entorno 45).PNG"
+        ],
+        "short": "Imagen lista con EcoStruxure Control Expert + Vijeo Designer + Intouch para proyectos de PLC y HMI.",
+        "specs": [
+            "Plataforma: VMware",
+            "Tamaño aprox: 70 GB",
+            "RAM recomendada: 4 GB",
+            "Sistema Operativo: Windows 10"
+        ],
+        "tags": [
+            "schneider",
+            "intouch v11",
+            "2024",
+            "completo"
+        ],
+        "badge": "new"
+    },
+    {
         "id": "soft-siemens-tia-v18",
         "category": "software",
         "brand": "Siemens",
