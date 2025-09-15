@@ -62,11 +62,11 @@
         "image": "assets/img/vms/MV Schneider 1.5 (entorno 1).png",
         "images": [
             "assets/img/vms/MV Schneider 1.5.png",
-            "assets/img/vms/MV Schneider 1.5 (entorno 1).PNG",
-            "assets/img/vms/MV Schneider 1.5 (entorno 2).PNG",
-            "assets/img/vms/MV Schneider 1.5 (entorno 3).PNG",
-            "assets/img/vms/MV Schneider 1.5 (entorno 4).PNG",
-            "assets/img/vms/MV Schneider 1.5 (entorno 45).PNG"
+            "assets/img/vms/MV Schneider 1.5 (entorno 1).png",
+            "assets/img/vms/MV Schneider 1.5 (entorno 2).png",
+            "assets/img/vms/MV Schneider 1.5 (entorno 3).png",
+            "assets/img/vms/MV Schneider 1.5 (entorno 4).png",
+            "assets/img/vms/MV Schneider 1.5 (entorno 5).png"
         ],
         "short": "Imagen lista con EcoStruxure Control Expert + Vijeo Designer + Intouch para proyectos de PLC y HMI.",
         "specs": [
