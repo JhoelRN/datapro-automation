@@ -84,6 +84,36 @@
         "badge": "new"
     },
     {
+        "id": "vm-AllenBradley 1.8",
+        "category": "vm",
+        "brand": "Allen-Bradley",
+        "title": "VM Allen Bradley 1.8 (IUSE)",
+        "price": 9,
+        "currency": "USD",
+        "image": "assets/img/vms/MV Allen Bradley 1.8 (entorno 1).png",
+        "images": [
+            "assets/img/vms/MV Allen Bradley 1.8.png",
+            "assets/img/vms/MV Allen Bradley 1.8 (entorno 1).png",
+            "assets/img/vms/MV Allen Bradley 1.8 (entorno 2).png",
+            "assets/img/vms/MV Allen Bradley 1.8 (entorno 3).png",
+            "assets/img/vms/MV Allen Bradley 1.8 (entorno 4).png",
+            "assets/img/vms/MV Allen Bradley 1.8 (entorno 5).png"
+        ],
+        "short": "Imagen lista con Softwares licencia Activa + Matlab y labview National Instruments para proyectos Rockwell Automation.",
+        "specs": [
+            "Plataforma: VMware",
+            "Tamaño aprox: 120 GB",
+            "RAM recomendada: >4 GB",
+            "Sistema Operativo: Windows 10 Pro"
+        ],
+        "tags": [
+            "studio 5000 v34, FTV",
+            "Matlab, Labview",
+            "2024",
+            "completo"
+        ]
+    },
+    {
         "id": "soft-siemens-tia-v18",
         "category": "software",
         "brand": "Siemens",
