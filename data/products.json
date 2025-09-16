@@ -39,16 +39,18 @@
         "price": 13,
         "currency": "USD",
         "image": "assets/img/vms/rockwell-studio5000-v33.jpg",
-        "short": "Studio 5000 Logix Designer + FactoryTalk View ME preinstalados para CompactLogix.",
+        "short": "Studio 5000 Logix Designer + FactoryTalk View ME preinstalados para Compact-Control Logix.",
         "specs": [
-            "Plataforma: VirtualBox",
-            "Tamaño aprox: 70 GB",
-            "RAM recomendada: 12 GB"
+            "Plataforma: VMware",
+            "Tamaño aprox: 140 GB",
+            "RAM recomendada: >6 GB",
+            "Máquina Virtual Actualizada (2025)"
         ],
         "tags": [
             "rockwell",
-            "studio5000",
-            "2025"
+            "studio5000 V36",
+            "2025",
+            "Completo"
         ],
         "badge": "new"
     },
