@@ -35,10 +35,19 @@
         "id": "vm-rockwell-studio5000-v36",
         "category": "vm",
         "brand": "Allen-Bradley",
-        "title": "VM Rockwell Studio 5000 V36",
+        "title": "VM Allen Bradley Rockwell (Studio 5000 V36)",
         "price": 13,
         "currency": "USD",
         "image": "assets/img/vms/MV Allen Bradley 1.2 (entorno 2).png",
+        "images": [
+            "assets/img/vms/MV Allen Bradley 1.2.png",
+            "assets/img/vms/MV Allen Bradley 1.2 (entorno 1).png",
+            "assets/img/vms/MV Allen Bradley 1.2 (entorno 2).png",
+            "assets/img/vms/MV Allen Bradley 1.2 (entorno 3).png",
+            "assets/img/vms/MV Allen Bradley 1.2 (entorno 4).png",
+            "assets/img/vms/MV Allen Bradley 1.2 (entorno 5).png",
+            "assets/img/vms/MV Allen Bradley 1.2 (entorno 6).png"
+        ],
         "short": "Studio 5000 Logix Designer + FactoryTalk View ME preinstalados para Compact-Control Logix.",
         "specs": [
             "Plataforma: VMware",
