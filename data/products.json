@@ -178,7 +178,7 @@
         "tags": [
             "omron",
             "MV",
-            "2024",
+            "istalados",
             "completo"
         ]
     },
@@ -218,6 +218,26 @@
         ],
         "tags": [
             "VMWare V16 Pro",
+            "Full",
+            "Activo"
+        ]
+    },
+    {
+        "id": "soft-factory_ioV16",
+        "category": "software",
+        "brand": "Factory_IO",
+        "title": "Factory_IO V2.4.3",
+        "price": 0,
+        "currency": "USD",
+        "image": "assets/img/soft/2-Software FACTORY_IO.png",
+        "short": "Software FACTORY IO activo.",
+        "specs": [
+            "Windows 10/11",
+            "64-bit",
+            "Licenciamiento: activo"
+        ],
+        "tags": [
+            "Factory IO",
             "Full",
             "Activo"
         ]
