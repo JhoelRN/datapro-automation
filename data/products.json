@@ -95,6 +95,37 @@
         "badge": "new"
     },
     {
+        "id": "vm-disenioEingenieria 1.0",
+        "category": "vm",
+        "brand": "Ingenieria",
+        "title": "VM Diseño e Ingenieria 1.0",
+        "price": 9,
+        "currency": "USD",
+        "image": "assets/img/vms/MV Disenio e Ingenieria 1.0 (entorno 2).png",
+        "images": [
+            "assets/img/vms/MV Schneider 1.5.png",
+            "assets/img/vms/MV Schneider 1.5 (entorno 1).png",
+            "assets/img/vms/MV Schneider 1.5 (entorno 2).png",
+            "assets/img/vms/MV Schneider 1.5 (entorno 3).png",
+            "assets/img/vms/MV Schneider 1.5 (entorno 4).png",
+            "assets/img/vms/MV Schneider 1.5 (entorno 5).png"
+        ],
+        "short": "Imagen lista con Softwares dedicados a Diseño e Ingeniería con licencias activas.",
+        "specs": [
+            "Plataforma: VMware",
+            "Tamaño aprox: 70 GB",
+            "RAM recomendada: 4 GB",
+            "Sistema Operativo: Windows 10"
+        ],
+        "tags": [
+            "Diseño",
+            "Ingeniería",
+            "Robusto",
+            "completo"
+        ],
+        "badge": "new"
+    },
+    {
         "id": "vm-schneider 2.0",
         "category": "vm",
         "brand": "Schneider-Electric",
