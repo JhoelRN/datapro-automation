@@ -191,10 +191,11 @@
         "currency": "USD",
         "image": "assets/img/vms/MV Robotics Industrial 1.0 (entorno 1).png",
         "images": [
-            "assets/img/vms/MV Omron 1.8.png",
-            "assets/img/vms/MV Omron 1.8 (entorno 1).png",
-            "assets/img/vms/MV Omron 1.8 (entorno 2).png",
-            "assets/img/vms/MV Omron 1.8 (entorno 3).png"
+            "assets/img/vms/MV Robotics Industrial 1.0.png",
+            "assets/img/vms/MV Robotics Industrial 1.0 (entorno 1).png",
+            "assets/img/vms/MV Robotics Industrial 1.0 (entorno 2).png",
+            "assets/img/vms/MV Robotics Industrial 1.0 (entorno 3).png",
+            "assets/img/vms/MV Robotics Industrial 1.0 (entorno 4).png"
         ],
         "short": "Imagen lista con Softwares licencia Activa.",
         "specs": [
