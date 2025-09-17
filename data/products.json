@@ -212,22 +212,42 @@
         ]
     },
     {
-        "id": "soft-siemens-tia-v18",
+        "id": "soft-siemens-tia-v19",
         "category": "software",
         "brand": "Siemens",
-        "title": "TIA Portal V18 (instaladores)",
+        "title": "TIA Portal V19 (instaladores)",
         "price": 0,
         "currency": "USD",
-        "image": "assets/img/soft/tia.jpg",
-        "short": "Guía de descarga oficial y notas de versión para la edición V18.",
+        "image": "assets/img/soft/4-Software TiaPortalV19.png",
+        "short": "Acceso descarga oficial y notas de versión para la edición V19.",
         "specs": [
             "Windows 10/11",
             "64-bit",
-            "Licenciamiento: trial/comercial"
+            "Licenciamiento: activo"
         ],
         "tags": [
             "siemens",
-            "tia",
+            "tia V19",
+            "descarga"
+        ]
+    },
+    {
+        "id": "soft-autocad-electrical-2024",
+        "category": "software",
+        "brand": "Autocad Electrical",
+        "title": "Autocad Electrical 2024 (instalador)",
+        "price": 0,
+        "currency": "USD",
+        "image": "assets/img/soft/3-Software AutocadELECTRICAL2024.png",
+        "short": "Acceso descarga oficial y notas de versión para la edición 2024.",
+        "specs": [
+            "Windows 10/11",
+            "64-bit",
+            "Licenciamiento: activo"
+        ],
+        "tags": [
+            "AUTOCAD ELECTRICAL",
+            "2024",
             "descarga"
         ]
     },
