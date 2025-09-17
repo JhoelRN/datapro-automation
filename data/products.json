@@ -35,7 +35,7 @@
         "id": "vm-rockwell-studio5000-v36",
         "category": "vm",
         "brand": "Allen-Bradley",
-        "title": "VM Allen Bradley Rockwell (Studio 5000 V36)",
+        "title": "VM Allen Bradley 8.0 (Studio 5000 V36)",
         "price": 13,
         "currency": "USD",
         "image": "assets/img/vms/MV Allen Bradley 1.2 (entorno 2).png",
@@ -162,6 +162,34 @@
         "price": 9,
         "currency": "USD",
         "image": "assets/img/vms/MV Omron 1.8 (entorno 1).png",
+        "images": [
+            "assets/img/vms/MV Omron 1.8.png",
+            "assets/img/vms/MV Omron 1.8 (entorno 1).png",
+            "assets/img/vms/MV Omron 1.8 (entorno 2).png",
+            "assets/img/vms/MV Omron 1.8 (entorno 3).png"
+        ],
+        "short": "Imagen lista con Softwares licencia Activa.",
+        "specs": [
+            "Plataforma: VMware",
+            "Tamaño aprox: 80 GB",
+            "RAM recomendada: >4 GB",
+            "Sistema Operativo: Windows 10 Pro"
+        ],
+        "tags": [
+            "omron",
+            "MV",
+            "istalados",
+            "completo"
+        ]
+    },
+    {
+        "id": "vm-RoboticsIndustrial 1.0",
+        "category": "vm",
+        "brand": "ROBOTICS Industrial",
+        "title": "VM Robotics Industrial 1.0",
+        "price": 9,
+        "currency": "USD",
+        "image": "assets/img/vms/MV Robotics Industrial 1.0 (entorno 1).png",
         "images": [
             "assets/img/vms/MV Omron 1.8.png",
             "assets/img/vms/MV Omron 1.8 (entorno 1).png",
