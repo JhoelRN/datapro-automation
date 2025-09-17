@@ -155,12 +155,40 @@
         ]
     },
     {
+        "id": "vm-Omron 1.8",
+        "category": "vm",
+        "brand": "OMRON",
+        "title": "VM OMRON 1.8",
+        "price": 9,
+        "currency": "USD",
+        "image": "assets/img/vms/MV Omron 1.8 (entorno 1).png",
+        "images": [
+            "assets/img/vms/MV Omron 1.8.png",
+            "assets/img/vms/MV Omron 1.8 (entorno 1).png",
+            "assets/img/vms/MV Omron 1.8 (entorno 2).png",
+            "assets/img/vms/MV Omron 1.8 (entorno 3).png"
+        ],
+        "short": "Imagen lista con Softwares licencia Activa.",
+        "specs": [
+            "Plataforma: VMware",
+            "Tamaño aprox: 80 GB",
+            "RAM recomendada: >4 GB",
+            "Sistema Operativo: Windows 10 Pro"
+        ],
+        "tags": [
+            "omron",
+            "MV",
+            "2024",
+            "completo"
+        ]
+    },
+    {
         "id": "soft-siemens-tia-v18",
         "category": "software",
         "brand": "Siemens",
         "title": "TIA Portal V18 (instaladores)",
         "price": 0,
-        "currency": "PEN",
+        "currency": "USD",
         "image": "assets/img/soft/tia.jpg",
         "short": "Guía de descarga oficial y notas de versión para la edición V18.",
         "specs": [
@@ -180,7 +208,7 @@
         "brand": "VMWare",
         "title": "VMWare Workstation 16 Pro (instalador)",
         "price": 0,
-        "currency": "PEN",
+        "currency": "USD",
         "image": "assets/img/soft/1-Software VMWare.png",
         "short": "Guía de descarga oficial y notas de versión para la edición V16.",
         "specs": [
