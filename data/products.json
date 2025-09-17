@@ -175,6 +175,26 @@
         ]
     },
     {
+        "id": "soft-vmwareV16",
+        "category": "software",
+        "brand": "VMWare",
+        "title": "VMWare Workstation 16 Pro (instalador)",
+        "price": 0,
+        "currency": "PEN",
+        "image": "assets/img/soft/1-Software VMWare.png",
+        "short": "Guía de descarga oficial y notas de versión para la edición V16.",
+        "specs": [
+            "Windows 10/11",
+            "64-bit",
+            "Licenciamiento: activo"
+        ],
+        "tags": [
+            "VMWare V16 Pro",
+            "Full",
+            "Activo"
+        ]
+    },
+    {
         "id": "curso-fanuc-intro",
         "category": "curso",
         "brand": "Fanuc",
