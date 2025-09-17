@@ -199,14 +199,14 @@
         "short": "Imagen lista con Softwares licencia Activa.",
         "specs": [
             "Plataforma: VMware",
-            "Tamaño aprox: 80 GB",
-            "RAM recomendada: >4 GB",
+            "Tamaño aprox: 40 GB",
+            "RAM recomendada: >6 GB",
             "Sistema Operativo: Windows 10 Pro"
         ],
         "tags": [
-            "omron",
-            "MV",
-            "istalados",
+            "YASKAWA",
+            "ABB",
+            "FANUC",
             "completo"
         ]
     },
