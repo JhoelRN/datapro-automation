@@ -1,0 +1,27 @@
+---
+interface Props {
+  category: {
+    slug: string;
+    label: string;
+    description: string;
+    count: number;
+    image: string;
+  };
+}
+
+const { category } = Astro.props;
+---
+
+<article class="category-card">
+  <a href={`/categorias/${category.slug}/`}>
+    <div class="category-card-media">
+      <img src={category.image} alt={category.label} loading="lazy" />
+    </div>
+    <div class="category-card-body">
+      <p class="eyebrow">Categoría</p>
+      <h3>{category.label}</h3>
+      <p>{category.description}</p>
+      <strong>{category.count} recursos</strong>
+    </div>
+  </a>
+</article>

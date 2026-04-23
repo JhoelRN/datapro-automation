@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SocialLink from '../../components/SocialLink.astro';
+
+const channels = [
+  {
+    title: 'YouTube',
+    copy: 'Canal para reforzar marca, confianza y aprendizaje con contenido tecnico visible.',
+    href: 'https://www.youtube.com/@LEVEM',
+    tone: 'youtube'
+  },
+  {
+    title: 'Facebook',
+    copy: 'Espacio de presencia social para ampliar alcance, anuncios y relacion con la comunidad.',
+    href: 'https://www.facebook.com/profile.php?id=61580066873337',
+    tone: 'facebook'
+  },
+  {
+    title: 'Instagram',
+    copy: 'Canal visual para mostrar contenido, novedades y reforzar la identidad de la marca.',
+    href: 'https://www.instagram.com/dtp_automation/',
+    tone: 'instagram'
+  },
+  {
+    title: 'WhatsApp',
+    copy: 'Canal directo para consultas comerciales, soporte y seguimiento de interesados.',
+    href: 'https://wa.me/51969310501?text=Hola%20DTP%20Automation%2C%20quiero%20unirme%20a%20la%20comunidad.',
+    tone: 'whatsapp'
+  },
+  {
+    title: 'TikTok',
+    copy: 'Espacio para ampliar alcance con contenido breve y mantener presencia activa de la marca.',
+    href: 'https://www.tiktok.com/@dtp.automation',
+    tone: 'tiktok'
+  }
+];
+---
+
+<BaseLayout title="Comunidad | DTP Automation" description="Canales y comunidad de DTP Automation." bodyClass="site-community">
+  <Header currentPath="/comunidad/" />
+
+  <main>
+    <section class="page-hero">
+      <div class="container page-hero-grid">
+        <div>
+          <span class="eyebrow">Comunidad</span>
+          <h1>Una presencia digital mas unificada alrededor de la marca</h1>
+          <p class="section-copy">
+            Esta pagina integra tus canales y ayuda a que la web funcione tambien como centro de comunidad, no solo
+            como escaparate de productos.
+          </p>
+        </div>
+
+        <div class="callout-card">
+          <p>Tu presencia digital gana mas valor cuando la web conecta comunidad, aprendizaje y contacto.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="container card-grid-3">
+        {channels.map((channel) => (
+          <article class="contact-card">
+            <h2>{channel.title}</h2>
+            <p>{channel.copy}</p>
+            <SocialLink href={channel.href} label={channel.title} tone={channel.tone} variant="button" />
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section-block section-alt">
+      <div class="container two-column-callout">
+        <div>
+          <span class="eyebrow">Uso estrategico</span>
+          <h2>La comunidad tambien puede apoyar el crecimiento comercial</h2>
+          <p class="section-copy">
+            Una estructura asi prepara el terreno para futuras publicaciones, cursos, recursos gratuitos, demostraciones
+            o lanzamientos nuevos.
+          </p>
+        </div>
+
+        <div class="callout-card">
+          <ul class="feature-list">
+            <li>Refuerzo de marca tecnica.</li>
+            <li>Canal de confianza antes de la compra.</li>
+            <li>Base para cursos y contenido futuro.</li>
+            <li>Mas puntos de contacto con potenciales clientes.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

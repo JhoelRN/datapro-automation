@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const principles = [
+  'Especializacion en automatizacion industrial y recursos tecnicos.',
+  'Presentacion mas seria de software, maquinas virtuales, cursos y soporte.',
+  'Base web pensada para confianza, orden y escalabilidad.'
+];
+
+const values = [
+  {
+    title: 'Criterio tecnico',
+    copy: 'La marca se apoya en una linea de recursos y soluciones vinculadas al mundo de la automatizacion industrial.'
+  },
+  {
+    title: 'Acompanamiento',
+    copy: 'La propuesta no se limita a mostrar productos: tambien transmite cercania, soporte y continuidad de atencion.'
+  },
+  {
+    title: 'Evolucion constante',
+    copy: 'La nueva web esta pensada para crecer con mas contenido, mejores paginas y una identidad digital mas madura.'
+  }
+];
+
+const contactCards = [
+  {
+    title: 'WhatsApp',
+    copy: 'Canal principal para resolver dudas sobre acceso, requisitos, contenido, entrega y soporte.',
+    href: 'https://wa.me/51969310501?text=Hola%20DTP%20Automation%2C%20quiero%20mas%20informacion.',
+    label: 'Abrir conversacion'
+  },
+  {
+    title: 'Correo',
+    copy: 'Ideal para seguimiento, coordinacion y solicitudes que requieren un intercambio mas formal.',
+    href: 'mailto:automatica.core@gmail.com',
+    label: 'Enviar correo'
+  },
+  {
+    title: 'Redes y comunidad',
+    copy: 'Punto de apoyo para reforzar confianza, visibilidad y continuidad de marca.',
+    href: '/comunidad/',
+    label: 'Ver canales'
+  }
+];
+
+const faqs = [
+  {
+    question: 'Por que es importante una pagina Nosotros en este proyecto?',
+    answer: 'Porque ayuda a construir confianza, contexto institucional y una percepcion mas profesional de la empresa frente a nuevos visitantes.'
+  },
+  {
+    question: 'Esta seccion puede mejorar aun mas?',
+    answer: 'Si. Se puede enriquecer despues con historia de marca, trayectoria, fotos, hitos, testimonios y enfoque diferencial.'
+  },
+  {
+    question: 'Que efecto tiene en la web general?',
+    answer: 'Hace que la pagina se perciba menos improvisada y mas alineada con una empresa seria, tecnica y preparada para atender clientes.'
+  }
+];
+---
+
+<BaseLayout title="Nosotros | DTP Automation" description="Presentacion institucional de DTP Automation." bodyClass="site-about">
+  <Header currentPath="/nosotros/" />
+
+  <main>
+    <section class="page-hero">
+      <div class="container page-hero-grid">
+        <div>
+          <span class="eyebrow">Nosotros</span>
+          <h1>Una identidad mas clara para respaldar la propuesta tecnica de la empresa</h1>
+          <p class="section-copy">
+            Esta pagina ayuda a que la marca se perciba como una organizacion que estructura soluciones, acompana
+            procesos y construye una presencia profesional, no solo como un listado de recursos.
+          </p>
+        </div>
+
+        <div class="callout-card">
+          <p>Una web profesional tambien necesita contexto institucional, posicionamiento y una voz mas propia.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="container two-column-callout">
+        <div class="callout-card">
+          <span class="eyebrow">Posicionamiento</span>
+          <h2>Que comunica ahora el proyecto</h2>
+          <ul class="feature-list">
+            {principles.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="callout-card">
+          <span class="eyebrow">Direccion</span>
+          <h2>Que puede crecer despues</h2>
+          <p>
+            Casos de exito, testimonios, preguntas frecuentes, articulos tecnicos, landing pages por tecnologia y una
+            estrategia de captacion mas completa para distintos tipos de cliente.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block section-alt">
+      <div class="container card-grid-3">
+        {values.map((value) => (
+          <article class="contact-card">
+            <h2>{value.title}</h2>
+            <p>{value.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section-block" id="contacto">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Contacto</span>
+            <h2>Canales directos para consultas, coordinacion y soporte</h2>
+          </div>
+        </div>
+
+        <div class="card-grid-3">
+          {contactCards.map((card) => (
+            <article class="contact-card">
+              <h2>{card.title}</h2>
+              <p>{card.copy}</p>
+              <a class="btn btn-ghost" href={card.href} target={card.href.startsWith('http') ? '_blank' : undefined} rel={card.href.startsWith('http') ? 'noopener' : undefined}>{card.label}</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="container faq-wrap">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">FAQ</span>
+            <h2>Preguntas frecuentes sobre la identidad del proyecto</h2>
+          </div>
+        </div>
+
+        <div class="faq-grid">
+          {faqs.map((faq) => (
+            <details class="faq-item">
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

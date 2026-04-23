@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ProductDetail from '../../components/ProductDetail.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { getRelatedProducts, products, slugify } from '../../data/catalog';
+
+export function getStaticPaths() {
+  return products.map((product) => ({
+    params: { id: slugify(product.id) },
+    props: { product }
+  }));
+}
+
+const { product } = Astro.props;
+const relatedProducts = getRelatedProducts(product, 3);
+---
+
+<BaseLayout title={`${product.title} | DTP Automation`} description={product.short} bodyClass="site-product">
+  <Header currentPath={`/productos/${slugify(product.id)}/`} />
+
+  <main>
+    <section class="page-hero page-hero-compact">
+      <div class="container">
+        <p class="breadcrumb"><a href="/">Inicio</a> / <a href="/categorias/vm/">Maquinas Virtuales</a> / <span>{product.title}</span></p>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="container">
+        <ProductDetail product={product} />
+      </div>
+    </section>
+
+    <section class="section-block section-alt">
+      <div class="container split-showcase">
+        <div class="callout-card">
+          <span class="eyebrow">Presentacion</span>
+          <h2>El detalle ahora explica mejor el valor del recurso</h2>
+          <p>
+            La ficha individual ya no solo muestra una imagen y un precio. Ahora se piensa como una pagina de venta y
+            confianza, con mejor jerarquia visual y un CTA mas directo.
+          </p>
+        </div>
+
+        <div class="callout-card">
+          <span class="eyebrow">Proximo paso</span>
+          <h2>Lista para sumar FAQs, garantias y testimonios</h2>
+          <p>
+            Esta base permite seguir enriqueciendo cada producto con bloques de valor, preguntas frecuentes o contenido
+            tecnico adicional.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {relatedProducts.length > 0 && (
+      <section class="section-block section-alt">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Relacionados</span>
+              <h2>Otros recursos de la misma categoria</h2>
+            </div>
+          </div>
+
+          <div class="product-grid">
+            {relatedProducts.map((item) => (
+              <ProductCard product={item} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+  </main>
+
+  <Footer />
+</BaseLayout>

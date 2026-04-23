@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { getFeaturedProducts, products } from '../data/catalog';
+import { courses } from '../data/courses';
+
+const featuredProducts = getFeaturedProducts(6);
+
+const roadmap = [
+  'Maquinas virtuales y software con mejor narrativa comercial.',
+  'Servicios, comunidad y nosotros como parte visible del proyecto.',
+  'Estructura compatible con crecimiento hacia blog, FAQ, testimonios y recursos gratuitos.'
+];
+
+const experience = [
+  {
+    metric: `${courses.length}`,
+    label: 'Cursos compartidos',
+    icon: 'courses',
+    iconSrc: '/assets/img/ui/stat-courses.svg'
+  },
+  {
+    metric: `${products.length}+`,
+    label: 'Maquinas Virtuales',
+    icon: 'machines',
+    iconSrc: '/assets/img/ui/stat-machines.svg'
+  },
+  {
+    metric: '100+',
+    label: 'Instaladores softwares y programas',
+    icon: 'software',
+    iconSrc: '/assets/img/ui/stat-software.svg'
+  }
+];
+
+const paymentMethods = [
+  {
+    name: 'PayPal',
+    image: '/assets/img/payments/paypal.png'
+  },
+  {
+    name: 'Mercado Pago',
+    image: '/assets/img/payments/mercadopago.png'
+  },
+  {
+    name: 'BCP',
+    image: '/assets/img/payments/bcp.png'
+  },
+  {
+    name: 'Yape',
+    image: '/assets/img/payments/yape.png'
+  },
+  {
+    name: 'Plin',
+    image: '/assets/img/payments/plin.png'
+  },
+  {
+    name: 'Scotiabank',
+    image: '/assets/img/payments/scotiabank.png'
+  }
+];
+
+const trustSignals = [
+  'Arquitectura moderna en Astro con enfoque de crecimiento.',
+  'Maquinas virtuales y paginas preparadas para comunicar mejor cada linea de negocio.',
+  'Estructura lista para sumar FAQ, testimonios, blog y landing pages especificas.',
+  'Contenido actual reutilizado para no perder el trabajo ya realizado.'
+];
+
+const faqs = [
+  {
+    question: 'Que mejora realmente con esta nueva estructura?',
+    answer: 'Mejora la presencia de marca, la claridad de la oferta, la presentacion de servicios y la escalabilidad tecnica del sitio para seguir creciendo sin rehacerlo todo.'
+  },
+  {
+    question: 'Se puede seguir usando la informacion actual?',
+    answer: 'Si. La nueva base esta pensada para reutilizar imagenes, nombres y contenido existente, pero presentandolos con una jerarquia mucho mas profesional.'
+  },
+  {
+    question: 'Que se podria sumar despues?',
+    answer: 'Formularios, testimonios, articulos tecnicos, preguntas frecuentes por producto, filtros mas avanzados, landings por tecnologia y estrategias de SEO mas profundas.'
+  }
+];
+---
+
+<BaseLayout
+  title="DTP Automation | Plataforma web para automatizacion industrial"
+  description="Comunidad DTP Automation con objetivo de crecer, compartir y difundir información."
+  bodyClass="site-home"
+>
+  <Header currentPath="/" />
+
+  <main>
+    <section class="hero hero-extended">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">AUTOMATIZACION INDUSTRIAL Y RECURSOS TECNICOS</span>
+          <h1>Plataforma de automatizacion industrial</h1>
+          <p class="hero-lead">
+            Centralizamos maquinas virtuales, servicios y contenido tecnico para que puedas evaluar soluciones,
+            resolver dudas y avanzar mas rapido en tus proyectos industriales.
+          </p>
+
+          <ul class="trust-list">
+            <li>Accede a maquinas virtuales y softwares organizados por categoria.</li>
+            <li>Encuentra cursos y recursos tecnicos para fortalecer tu aprendizaje.</li>
+            <li>Consulta soporte y asesoria para resolver dudas puntuales.</li>
+          </ul>
+        </div>
+
+        <aside class="hero-panel">
+          <div class="hero-panel-card">
+            <p class="hero-panel-label">Lo que ya puedes encontrar</p>
+            <div class="hero-stats">
+              {experience.map((item) => (
+                <article class="stat-card">
+                  <div class={`stat-icon stat-icon-${item.icon}`} aria-hidden="true">
+                    <img src={item.iconSrc} alt="" loading="lazy" />
+                  </div>
+                  <strong>{item.metric}</strong>
+                  <span>{item.label}</span>
+                </article>
+              ))}
+            </div>
+
+            <div class="hero-note">
+              <p>La plataforma esta pensada para mostrar soluciones con mas orden, facilitar la consulta tecnica y mejorar la conversion desde el primer contacto.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section-block section-alt">
+      <div class="container">
+        <div class="section-heading section-heading-spread">
+          <div>
+            <span class="eyebrow">Destacados</span>
+            <h2>Maquinas Virtuales y Cursos</h2>
+          </div>
+          <a class="btn btn-ghost" href="/categorias/vm/">Ver maquinas virtuales</a>
+        </div>
+
+        <div class="product-grid">
+          {featuredProducts.map((product) => (
+            <ProductCard product={product} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block section-alt payment-section payment-section-light">
+      <div class="container payment-strip">
+        <div class="payment-copy">
+          <h2>Metodos de pago</h2>
+          <p>Aceptamos Yape, BCP y otros.</p>
+          <p>Tambien para el extranjero se cuenta con PayPal y Mercado Pago.</p>
+        </div>
+
+        <div class="payment-grid" aria-label="Metodos de pago disponibles">
+          {paymentMethods.map((method) => (
+            <article class="payment-logo">
+              <img src={method.image} alt={method.name} loading="lazy" />
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    
+
+
+  </main>
+
+  <Footer />
+</BaseLayout>

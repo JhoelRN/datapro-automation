@@ -1,0 +1,267 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { courses } from '../../data/courses';
+
+const totalProviders = new Set(courses.map((course) => course.provider)).size;
+const totalCategories = new Set(courses.map((course) => course.category)).size;
+const sortedCourses = [...courses].sort((a, b) => Number(a.id) - Number(b.id));
+const groupedCourses = Array.from(
+  sortedCourses.reduce((map, course) => {
+    const items = map.get(course.category) ?? [];
+    items.push(course);
+    map.set(course.category, items);
+    return map;
+  }, new Map<string, typeof sortedCourses>())
+).map(([category, items]) => ({
+  category,
+  items
+}));
+---
+
+<BaseLayout title="Cursos | DTP Automation" description="Listado de cursos disponibles en DTP Automation." bodyClass="site-courses">
+  <Header currentPath="/cursos/" />
+
+  <main>
+    <section class="page-hero">
+      <div class="container page-hero-grid">
+        <div>
+          <span class="eyebrow">Cursos disponibles</span>
+          <h1>Selecciona los cursos que te interesan y solicita informacion por WhatsApp</h1>
+          <p class="section-copy">
+            Este listado esta pensado para que el cliente marque los cursos de interes y envie una sola consulta clara
+            con todas sus selecciones.
+          </p>
+        </div>
+
+        <div class="callout-card">
+          <ul class="feature-list feature-list-compact">
+            <li>{sortedCourses.length} cursos listados actualmente.</li>
+            <li>{totalProviders} proveedores o marcas visibles.</li>
+            <li>{totalCategories} categorias ordenadas segun el ID inicial del listado.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="container courses-layout">
+        <section class="courses-list-card" aria-labelledby="courses-list-title">
+          <div class="category-search-feedback" data-course-search-feedback hidden>
+            <p>Resultados para <strong data-course-search-term></strong> en <strong>Cursos</strong>.</p>
+          </div>
+
+          <div class="courses-list-head">
+            <div>
+              <span class="eyebrow">Listado</span>
+              <h2 id="courses-list-title">Marca uno o varios cursos por categoria</h2>
+            </div>
+            <p class="section-copy">Cada curso seleccionado se agregara al resumen y al mensaje final de WhatsApp.</p>
+          </div>
+
+          {courses.length ? (
+            <div class="course-groups">
+              {groupedCourses.map((group, groupIndex) => (
+                <details class="course-group" open={groupIndex === 0}>
+                  <summary class="course-group-summary">
+                    <span>{group.category}</span>
+                    <strong>{group.items.length} cursos</strong>
+                  </summary>
+
+                  <div class="courses-table" role="list">
+                    <div class="courses-table-head" aria-hidden="true">
+                      <span>Marcar</span>
+                      <span>ID</span>
+                      <span>Proveedor</span>
+                      <span>Nombre del curso</span>
+                    </div>
+
+                    {group.items.map((course) => {
+                      const courseId = `course-${course.id}`;
+                      const filterText = `${course.id} ${course.category} ${course.provider} ${course.name}`.toLowerCase();
+                      return (
+                        <label class="course-row" for={courseId} role="listitem" data-course-row data-filter-text={filterText}>
+                          <span class="course-check">
+                            <input
+                              id={courseId}
+                              class="course-checkbox"
+                              type="checkbox"
+                              data-id={course.id}
+                              data-category={course.category}
+                              data-provider={course.provider}
+                              data-name={course.name}
+                            />
+                          </span>
+                          <span class="course-meta course-id" data-label="ID">{course.id}</span>
+                          <span class="course-meta" data-label="Proveedor">{course.provider}</span>
+                          <span class="course-title" data-label="Nombre del curso">{course.name}</span>
+                        </label>
+                      );
+                    })}
+                  </div>
+                </details>
+              ))}
+            </div>
+          ) : (
+            <div class="callout-card courses-empty">
+              <p>No hay cursos cargados todavia. Agrega filas en <code>src/data/courses.ts</code>.</p>
+            </div>
+          )}
+
+          <div class="category-search-empty" data-course-search-empty hidden>
+            <p>No encontramos cursos con ese termino.</p>
+          </div>
+        </section>
+
+        <aside class="courses-summary-card">
+          <span class="eyebrow">Resumen</span>
+          <h2>Cursos seleccionados</h2>
+          <p class="section-copy" id="courses-summary-copy">Aun no has marcado cursos.</p>
+
+          <ul class="selected-course-list" id="selected-course-list">
+            <li class="selected-course-empty">Selecciona al menos un curso para armar el mensaje.</li>
+          </ul>
+
+          <div class="courses-summary-actions">
+            <button class="btn btn-ghost" type="button" id="clear-courses">Limpiar seleccion</button>
+            <a
+              class="btn btn-full btn-disabled"
+              id="send-courses-whatsapp"
+              href="https://wa.me/51969310501"
+              target="_blank"
+              rel="noopener"
+              aria-disabled="true"
+            >
+              Enviar por WhatsApp
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  const baseWhatsappUrl = 'https://wa.me/51969310501';
+
+  function getSelectedCourses(checkboxes) {
+    return checkboxes
+      .filter((input) => input.checked)
+      .map((input) => ({
+        id: input.dataset.id || '',
+        category: input.dataset.category || '',
+        provider: input.dataset.provider || '',
+        name: input.dataset.name || ''
+      }));
+  }
+
+  function buildMessage(items) {
+    const lines = items.map((item, index) =>
+      `${index + 1}. ID ${item.id} | ${item.name} | Categoria: ${item.category} | Proveedor: ${item.provider}`
+    );
+
+    return [
+      'Hola, deseo informacion sobre los siguientes cursos:',
+      '',
+      ...lines
+    ].join('\n');
+  }
+
+  function renderSummary(items, summaryCopy, selectedList, whatsappLink) {
+    if (!summaryCopy || !selectedList || !whatsappLink) return;
+
+    if (!items.length) {
+      summaryCopy.textContent = 'Aun no has marcado cursos.';
+      selectedList.innerHTML = '<li class="selected-course-empty">Selecciona al menos un curso para armar el mensaje.</li>';
+      whatsappLink.href = baseWhatsappUrl;
+      whatsappLink.setAttribute('aria-disabled', 'true');
+      whatsappLink.classList.add('btn-disabled');
+      return;
+    }
+
+    summaryCopy.textContent = `${items.length} curso(s) listo(s) para enviar por WhatsApp.`;
+    selectedList.innerHTML = items
+      .map(
+        (item) =>
+          `<li><strong>${item.name}</strong><span>ID ${item.id} | ${item.category} | ${item.provider}</span></li>`
+      )
+      .join('');
+
+    const message = encodeURIComponent(buildMessage(items));
+    whatsappLink.href = `${baseWhatsappUrl}?text=${message}`;
+    whatsappLink.setAttribute('aria-disabled', 'false');
+    whatsappLink.classList.remove('btn-disabled');
+  }
+
+  function setupCoursesPage() {
+    const checkboxes = Array.from(document.querySelectorAll('.course-checkbox'));
+    const summaryCopy = document.querySelector('#courses-summary-copy');
+    const selectedList = document.querySelector('#selected-course-list');
+    const whatsappLink = document.querySelector('#send-courses-whatsapp');
+    const clearButton = document.querySelector('#clear-courses');
+    const feedback = document.querySelector('[data-course-search-feedback]');
+    const feedbackTerm = document.querySelector('[data-course-search-term]');
+    const emptyState = document.querySelector('[data-course-search-empty]');
+    const courseRows = Array.from(document.querySelectorAll('[data-course-row]'));
+    const courseGroups = Array.from(document.querySelectorAll('.course-group'));
+    const searchParams = new URLSearchParams(window.location.search);
+    const query = (searchParams.get('q') || '').trim().toLowerCase();
+
+    if (!checkboxes.length || !summaryCopy || !selectedList || !whatsappLink || !clearButton) return;
+    if (clearButton.dataset.bound === 'true') return;
+
+    if (query) {
+      let visibleRows = 0;
+
+      courseRows.forEach((row) => {
+        if (!(row instanceof HTMLElement)) return;
+        const filterText = (row.dataset.filterText || '').toLowerCase();
+        const matches = filterText.includes(query);
+        row.style.display = matches ? '' : 'none';
+        if (matches) visibleRows += 1;
+      });
+
+      courseGroups.forEach((group) => {
+        if (!(group instanceof HTMLElement)) return;
+        const hasVisibleRows = Array.from(group.querySelectorAll('[data-course-row]')).some((row) => {
+          return row instanceof HTMLElement && row.style.display !== 'none';
+        });
+        group.style.display = hasVisibleRows ? '' : 'none';
+      });
+
+      if (feedback instanceof HTMLElement) feedback.hidden = false;
+      if (feedbackTerm instanceof HTMLElement) feedbackTerm.textContent = searchParams.get('q') || '';
+      if (emptyState instanceof HTMLElement) emptyState.hidden = visibleRows !== 0;
+    }
+
+    const updateSummary = () => {
+      renderSummary(getSelectedCourses(checkboxes), summaryCopy, selectedList, whatsappLink);
+    };
+
+    checkboxes.forEach((input) => {
+      input.addEventListener('change', updateSummary);
+    });
+
+    clearButton.addEventListener('click', () => {
+      checkboxes.forEach((input) => {
+        input.checked = false;
+      });
+      renderSummary([], summaryCopy, selectedList, whatsappLink);
+    });
+
+    whatsappLink.addEventListener('click', (event) => {
+      if (whatsappLink.getAttribute('aria-disabled') === 'true') {
+        event.preventDefault();
+      }
+    });
+
+    clearButton.dataset.bound = 'true';
+    updateSummary();
+  }
+
+  document.addEventListener('astro:page-load', setupCoursesPage);
+  setupCoursesPage();
+</script>

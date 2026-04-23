@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const serviceLines = [
+  {
+    title: 'Soporte remoto especializado',
+    copy: 'Atencion para instalacion, activacion, revision de requisitos, acceso y acompanamiento tecnico segun el recurso contratado.'
+  },
+  {
+    title: 'Implementacion y puesta en marcha',
+    copy: 'Base ideal para presentar acompanamiento en software, maquinas virtuales y recursos para practicas o entornos profesionales.'
+  },
+  {
+    title: 'Asesoria para formacion',
+    copy: 'Orientacion para estudiantes, instructores o empresas que buscan rutas de aprendizaje mas aplicadas.'
+  }
+];
+
+const process = [
+  'El cliente identifica un recurso o necesidad tecnica.',
+  'Se valida el alcance, compatibilidad y objetivo de uso.',
+  'Se coordina entrega, acceso y soporte.',
+  'Se mantiene un canal directo para seguimiento.'
+];
+
+const advantages = [
+  'Atencion tecnica orientada a resolver consultas reales antes, durante y despues de la implementacion.',
+  'Presentacion mas clara de soporte, asesoria e implementacion dentro del ecosistema DTP Automation.',
+  'Espacio para detallar alcances, metodologia de trabajo y acompanamiento segun cada necesidad.',
+  'Base preparada para crecer hacia paquetes de servicio, formularios y una landing comercial mas solida.'
+];
+
+const faqs = [
+  {
+    question: 'Que tipo de ayuda puede solicitar un cliente?',
+    answer: 'El cliente puede solicitar apoyo en instalacion, activacion, validacion de requisitos, acceso a recursos, acompanamiento tecnico y orientacion sobre el uso correcto del material.'
+  },
+  {
+    question: 'Esta pagina sirve aunque el servicio aun no este totalmente detallado?',
+    answer: 'Si. Esta seccion permite mostrar desde ahora la linea de servicios y luego ampliarla con paquetes, tiempos de atencion, alcances y condiciones mas especificas.'
+  },
+  {
+    question: 'Se puede convertir en una landing mas comercial despues?',
+    answer: 'Si. La estructura ya esta preparada para incorporar beneficios, llamados a la accion, testimonios, preguntas frecuentes y formularios orientados a conversion.'
+  }
+];
+---
+
+<BaseLayout title="Servicios | DTP Automation" description="Servicios y lineas de soporte de DTP Automation." bodyClass="site-services">
+  <Header currentPath="/servicios/" />
+
+  <main>
+    <section class="page-hero">
+      <div class="container page-hero-grid">
+        <div>
+          <span class="eyebrow">Servicios</span>
+          <h1>Una propuesta de valor mas clara para soporte, asesoria e implementacion</h1>
+          <p class="section-copy">
+            La web no debe mostrar solo productos. Tambien debe comunicar que hay acompanamiento, criterio tecnico y
+            una forma seria de atender al cliente antes y despues de la compra.
+          </p>
+        </div>
+
+        <div class="callout-card">
+          <p>Esta pagina convierte tus servicios en una linea visible y comercialmente util.</p>
+          <a class="btn btn-full" href="https://wa.me/51969310501?text=Hola%20DTP%20Automation%2C%20quiero%20informacion%20sobre%20sus%20servicios." target="_blank" rel="noopener">Solicitar servicio</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="container card-grid-3">
+        {serviceLines.map((service) => (
+          <article class="contact-card">
+            <h2>{service.title}</h2>
+            <p>{service.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section-block section-alt">
+      <div class="container two-column-callout">
+        <div>
+          <span class="eyebrow">Proceso</span>
+          <h2>Una forma de trabajo mas profesional y mas facil de entender</h2>
+          <p class="section-copy">
+            Esta estructura ayuda a presentar mejor como atiendes, como entregas valor y que puede esperar el cliente
+            al contactarte.
+          </p>
+        </div>
+
+        <div class="callout-card">
+          <ol class="process-list">
+            {process.map((step) => (
+              <li>{step}</li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Ventajas</span>
+            <h2>Por que esta pagina de servicios aporta mas valor al proyecto</h2>
+          </div>
+        </div>
+
+        <div class="card-grid-4">
+          {advantages.map((item) => (
+            <article class="mini-card" data-service-card data-filter-text={item.toLowerCase()}>
+              <p>{item}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="category-search-feedback" data-service-search-feedback hidden>
+          <p>Resultados para <strong data-service-search-term></strong> en <strong>Servicios</strong>.</p>
+        </div>
+
+        <div class="category-search-empty" data-service-search-empty hidden>
+          <p>No encontramos coincidencias dentro de esta seccion.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block section-alt">
+      <div class="container faq-wrap">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">FAQ</span>
+            <h2>Dudas frecuentes sobre la linea de servicios</h2>
+          </div>
+        </div>
+
+        <div class="faq-grid">
+          {faqs.map((faq) => (
+            <details class="faq-item">
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  function setupServicesSearch() {
+    const params = new URLSearchParams(window.location.search);
+    const query = (params.get('q') || '').trim().toLowerCase();
+    const cards = Array.from(document.querySelectorAll('[data-service-card]'));
+    const feedback = document.querySelector('[data-service-search-feedback]');
+    const feedbackTerm = document.querySelector('[data-service-search-term]');
+    const emptyState = document.querySelector('[data-service-search-empty]');
+
+    if (!query || !cards.length) return;
+
+    let visibleCount = 0;
+
+    cards.forEach((card) => {
+      if (!(card instanceof HTMLElement)) return;
+      const filterText = (card.dataset.filterText || '').toLowerCase();
+      const matches = filterText.includes(query);
+      card.style.display = matches ? '' : 'none';
+      if (matches) visibleCount += 1;
+    });
+
+    if (feedback instanceof HTMLElement) feedback.hidden = false;
+    if (feedbackTerm instanceof HTMLElement) feedbackTerm.textContent = params.get('q') || '';
+    if (emptyState instanceof HTMLElement) emptyState.hidden = visibleCount !== 0;
+  }
+
+  document.addEventListener('astro:page-load', setupServicesSearch);
+  setupServicesSearch();
+</script>

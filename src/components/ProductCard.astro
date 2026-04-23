@@ -1,0 +1,30 @@
+---
+import { badgeLabel, categoryLabels, formatPrice, getProductUrl, type Product } from '../data/catalog';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const badge = badgeLabel(product.badge);
+const filterText = [product.title, product.brand, product.short, ...product.tags].join(' ').toLowerCase();
+---
+
+<article class="product-card" data-product-card data-filter-text={filterText}>
+  <a href={getProductUrl(product)} class="product-card-link">
+    <div class="product-card-media">
+      <img src={product.image} alt={product.title} loading="lazy" />
+      {badge && <span class="product-badge">{badge}</span>}
+    </div>
+
+    <div class="product-card-body">
+      <p class="product-card-category">{categoryLabels[product.category]} · {product.brand}</p>
+      <h3>{product.title}</h3>
+      <p class="product-card-copy">{product.short}</p>
+      <div class="product-card-footer">
+        <strong>{formatPrice(product.price, product.currency)}</strong>
+        <span>Ver detalle</span>
+      </div>
+    </div>
+  </a>
+</article>

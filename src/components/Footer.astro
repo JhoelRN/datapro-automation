@@ -1,0 +1,62 @@
+---
+import SocialLink from './SocialLink.astro';
+
+const socialLinks = [
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/profile.php?id=61580066873337',
+    tone: 'facebook'
+  },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/dtp_automation/',
+    tone: 'instagram'
+  },
+  {
+    label: 'YouTube',
+    href: 'https://www.youtube.com/@LEVEM',
+    tone: 'youtube'
+  },
+  {
+    label: 'WhatsApp',
+    href: 'https://wa.me/51969310501?text=Hola%20DTP%20Automation%2C%20quiero%20mas%20informacion.',
+    tone: 'whatsapp'
+  },
+  {
+    label: 'TikTok',
+    href: 'https://www.tiktok.com/@dtp.automation',
+    tone: 'tiktok'
+  }
+];
+---
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand-block">
+      <a class="brand brand-footer" href="/">
+        <img src="/assets/img/logo.svg" alt="DTP Automation" width="44" height="44" />
+        <div class="brand-copy">
+          <strong>DTP Automation</strong>
+          <span>Soluciones, recursos y soporte para automatizacion industrial</span>
+        </div>
+      </a>
+      <p class="footer-tagline">
+        Ecosistema digital para software, maquinas virtuales, capacitacion y soporte tecnico especializado.
+      </p>
+    </div>
+
+    <div class="footer-copy">
+      <p class="footer-overline">Canales oficiales</p>
+      <p>Una comunidad de automatizacion industrial donde compartimos recursos, aprendizaje y soporte para seguir creciendo en campo laboral ingenieria, tecnico y academico.</p>
+      <p class="footer-email">
+        <a href="mailto:automatica.core@gmail.com">automatica.core@gmail.com</a>
+      </p>
+      <div class="social-links" aria-label="Redes sociales">
+        {socialLinks.map((item) => (
+          <SocialLink href={item.href} label={item.label} tone={item.tone} />
+        ))}
+      </div>
+      <p><small>&copy; 2026 DTP Automation. Todos los derechos reservados.</small></p>
+    </div>
+  </div>
+</footer>

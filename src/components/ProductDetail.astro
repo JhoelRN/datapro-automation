@@ -1,0 +1,170 @@
+---
+import { badgeLabel, categoryLabels, formatPrice, slugify, type Product } from '../data/catalog';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const badge = badgeLabel(product.badge);
+const galleryId = `gallery-${slugify(product.id)}`;
+---
+
+<section class="product-detail">
+  <div class="product-gallery" data-gallery-root={galleryId}>
+    <div class="product-gallery-main">
+      <button class="product-zoom-trigger" type="button" data-gallery-open aria-label={`Ampliar imagen de ${product.title}`}>
+        <img
+          src={product.images[0] || product.image}
+          alt={product.title}
+          data-gallery-main
+        />
+      </button>
+
+      {badge && <span class="product-badge">{badge}</span>}
+
+      {product.images.length > 1 && (
+        <>
+          <button class="gallery-nav gallery-nav-prev" type="button" data-gallery-prev aria-label="Imagen anterior">
+            ‹
+          </button>
+          <button class="gallery-nav gallery-nav-next" type="button" data-gallery-next aria-label="Imagen siguiente">
+            ›
+          </button>
+          <div class="gallery-counter">
+            <span data-gallery-current>1</span> / <span>{product.images.length}</span>
+          </div>
+        </>
+      )}
+    </div>
+
+    {product.images.length > 1 && (
+      <div class="product-gallery-strip" role="list" aria-label={`Galeria de ${product.title}`}>
+        {product.images.map((image, index) => (
+          <button
+            class={`product-thumb ${index === 0 ? 'is-active' : ''}`}
+            type="button"
+            data-gallery-thumb
+            data-image={image}
+            data-index={index}
+            aria-label={`Ver imagen ${index + 1} de ${product.title}`}
+          >
+            <img src={image} alt={`${product.title} ${index + 1}`} loading="lazy" />
+          </button>
+        ))}
+      </div>
+    )}
+
+    <div class="gallery-hint">
+      <p>Haz clic en las miniaturas para cambiar la imagen principal o abre la vista ampliada.</p>
+    </div>
+
+    <dialog class="gallery-lightbox" data-gallery-lightbox>
+      <button class="gallery-lightbox-close" type="button" data-gallery-close aria-label="Cerrar imagen ampliada">x</button>
+      <img src={product.images[0] || product.image} alt={product.title} data-gallery-lightbox-image />
+    </dialog>
+  </div>
+
+  <div class="product-meta">
+    <p class="eyebrow">{categoryLabels[product.category]}</p>
+    <h1>{product.title}</h1>
+    <p class="product-brand">{product.brand}</p>
+    <p class="product-price">{formatPrice(product.price, product.currency)}</p>
+    <p class="product-summary">{product.short}</p>
+
+    <div class="product-actions">
+      <a
+        class="btn"
+        href={`https://wa.me/51969310501?text=${encodeURIComponent(`Hola DTP Automation, deseo informacion sobre ${product.title}.`)}`}
+        target="_blank"
+        rel="noopener"
+      >
+        Solicitar informacion
+      </a>
+      <a class="btn btn-ghost" href="/categorias/vm/">Volver a maquinas virtuales</a>
+    </div>
+
+    <div class="product-spec-box">
+      <h2>Caracteristicas</h2>
+      <ul class="product-specs">
+        {product.specs.map((spec) => (
+          <li>{spec}</li>
+        ))}
+      </ul>
+    </div>
+
+    {product.tags.length > 0 && (
+      <div class="tag-list">
+        {product.tags.map((tag) => (
+          <span>#{tag}</span>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-gallery-root]').forEach((root) => {
+    const mainImage = root.querySelector('[data-gallery-main]');
+    const lightbox = root.querySelector('[data-gallery-lightbox]');
+    const lightboxImage = root.querySelector('[data-gallery-lightbox-image]');
+    const currentLabel = root.querySelector('[data-gallery-current]');
+    const thumbs = Array.from(root.querySelectorAll('[data-gallery-thumb]'));
+    const prevButton = root.querySelector('[data-gallery-prev]');
+    const nextButton = root.querySelector('[data-gallery-next]');
+    const openButton = root.querySelector('[data-gallery-open]');
+    const closeButton = root.querySelector('[data-gallery-close]');
+
+    if (!mainImage || thumbs.length === 0) return;
+
+    let currentIndex = thumbs.findIndex((thumb) => thumb.classList.contains('is-active'));
+    if (currentIndex < 0) currentIndex = 0;
+
+    const setImage = (index) => {
+      const nextIndex = (index + thumbs.length) % thumbs.length;
+      const thumb = thumbs[nextIndex];
+      const image = thumb.getAttribute('data-image');
+      if (!image) return;
+
+      currentIndex = nextIndex;
+      mainImage.setAttribute('src', image);
+      if (lightboxImage) lightboxImage.setAttribute('src', image);
+      if (currentLabel) currentLabel.textContent = String(nextIndex + 1);
+
+      thumbs.forEach((item, itemIndex) => {
+        item.classList.toggle('is-active', itemIndex === nextIndex);
+      });
+    };
+
+    thumbs.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => setImage(index));
+    });
+
+    prevButton?.addEventListener('click', () => setImage(currentIndex - 1));
+    nextButton?.addEventListener('click', () => setImage(currentIndex + 1));
+
+    openButton?.addEventListener('click', () => {
+      if (!lightbox) return;
+      if (typeof lightbox.showModal === 'function') {
+        lightbox.showModal();
+      }
+    });
+
+    closeButton?.addEventListener('click', () => {
+      if (!lightbox) return;
+      lightbox.close();
+    });
+
+    lightbox?.addEventListener('click', (event) => {
+      const dialog = event.currentTarget;
+      const rect = dialog.getBoundingClientRect();
+      const isInside =
+        rect.top <= event.clientY &&
+        event.clientY <= rect.top + rect.height &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.left + rect.width;
+
+      if (!isInside) dialog.close();
+    });
+  });
+</script>

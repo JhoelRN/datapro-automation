@@ -1,0 +1,134 @@
+---
+interface LinkItem {
+  href: string;
+  label: string;
+}
+
+interface SearchCategory {
+  value: string;
+  label: string;
+  path: string;
+}
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+const links: LinkItem[] = [
+  { href: '/', label: 'Inicio' },
+  { href: '/categorias/vm/', label: 'Maquinas Virtuales' },
+  { href: '/cursos/', label: 'Cursos' },
+  { href: '/servicios/', label: 'Servicios' },
+  { href: '/comunidad/', label: 'Comunidad' },
+  { href: '/nosotros/', label: 'Nosotros' }
+];
+
+const searchCategories: SearchCategory[] = [
+  { value: 'vm', label: 'Maquinas Virtuales', path: '/categorias/vm/' },
+  { value: 'software', label: 'Software', path: '/categorias/software/' },
+  { value: 'curso', label: 'Cursos', path: '/cursos/' },
+  { value: 'servicio', label: 'Servicios', path: '/servicios/' }
+];
+
+function isActiveLink(linkHref: string) {
+  if (linkHref === '/') return currentPath === '/';
+  return currentPath === linkHref || currentPath.startsWith(linkHref);
+}
+
+function getCurrentSearchCategory() {
+  const matched = searchCategories.find((item) => currentPath.startsWith(item.path));
+  return matched?.path ?? '/categorias/vm/';
+}
+---
+
+<header class="header site-header">
+  <div class="container header-row">
+    <a class="brand" href="/" aria-label="DTP Automation">
+      <img src="/assets/img/logo.svg" alt="DTP Automation" width="48" height="48" />
+      <div class="brand-copy">
+        <strong>DTP Automation</strong>
+      </div>
+    </a>
+
+    <div class="header-tools">
+      <form class="catalog-search catalog-search-compact" data-catalog-search-form action="/categorias/vm/" method="get">
+        <label class="catalog-search-select-wrap">
+          <span class="sr-only">Seleccionar categoria</span>
+          <select class="catalog-search-select" name="category" data-catalog-search-category>
+            {searchCategories.map((item) => (
+              <option value={item.path} selected={item.path === getCurrentSearchCategory()}>{item.label}</option>
+            ))}
+          </select>
+        </label>
+
+        <label class="catalog-search-input-wrap">
+          <span class="sr-only">Buscar en el catalogo</span>
+          <input
+            class="catalog-search-input"
+            type="search"
+            name="q"
+            placeholder="Busca en nuestro catalogo (Siemens, TIA V17, FANUC...)"
+            autocomplete="off"
+          />
+        </label>
+
+        <button class="catalog-search-button" type="submit">Buscar</button>
+      </form>
+
+      <div class="header-actions-cluster">
+        <div class="header-social-mini" aria-label="Accesos rapidos">
+          <a class="header-social-icon header-social-icon-youtube" href="https://www.youtube.com/@LEVEM" target="_blank" rel="noopener" aria-label="YouTube">
+            <span class="social-link-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M21.2 7.2a2.8 2.8 0 0 0-2-2C17.4 4.7 12 4.7 12 4.7s-5.4 0-7.2.5a2.8 2.8 0 0 0-2 2A29.3 29.3 0 0 0 2.3 12a29.3 29.3 0 0 0 .5 4.8 2.8 2.8 0 0 0 2 2c1.8.5 7.2.5 7.2.5s5.4 0 7.2-.5a2.8 2.8 0 0 0 2-2 29.3 29.3 0 0 0 .5-4.8 29.3 29.3 0 0 0-.5-4.8ZM10.2 15.5v-7L16 12l-5.8 3.5Z"/></svg>
+            </span>
+          </a>
+          <a class="header-social-icon header-social-icon-whatsapp" href="https://wa.me/51969310501?text=Hola%20DTP%20Automation%2C%20quiero%20mas%20informacion." target="_blank" rel="noopener" aria-label="WhatsApp">
+            <span class="social-link-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3.2a8.8 8.8 0 0 0-7.5 13.4L3.3 21l4.6-1.2A8.8 8.8 0 1 0 12 3.2Zm0 15.9a7 7 0 0 1-3.6-1l-.3-.2-2.7.7.7-2.6-.2-.3A7 7 0 1 1 12 19.1Zm3.8-5.3c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.6.1l-.4.5c-.1.2-.3.2-.5.1a5.7 5.7 0 0 1-2.8-2.4c-.1-.2 0-.4.1-.5l.3-.4a.6.6 0 0 0 .1-.6l-.7-1.6c-.1-.2-.3-.3-.5-.3h-.4a.9.9 0 0 0-.6.3 2.6 2.6 0 0 0-.8 1.9c0 1.1.8 2.2 1 2.5a7.7 7.7 0 0 0 3 2.7c1.8.8 1.8.5 2.2.5a1.9 1.9 0 0 0 1.3-.9 1.6 1.6 0 0 0 .1-.9c-.1 0-.3-.1-.5-.2Z"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav-red" aria-label="Navegacion principal">
+    <div class="container nav-row">
+      {links.map((link) => (
+        <a href={link.href} class={isActiveLink(link.href) ? 'active' : undefined}>{link.label}</a>
+      ))}
+    </div>
+  </nav>
+</header>
+
+<script>
+  function setupHeaderSearch() {
+    const form = document.querySelector('[data-catalog-search-form]');
+    const categorySelect = document.querySelector('[data-catalog-search-category]');
+
+    if (!(form instanceof HTMLFormElement) || !(categorySelect instanceof HTMLSelectElement)) return;
+    if (form.dataset.bound === 'true') return;
+
+    const navigateToTarget = () => {
+      const action = categorySelect.value || '/categorias/vm/';
+      const searchInput = form.querySelector('input[name="q"]');
+      const query = searchInput instanceof HTMLInputElement ? searchInput.value.trim() : '';
+      const targetUrl = query ? `${action}?${new URLSearchParams({ q: query }).toString()}` : action;
+      window.location.href = targetUrl;
+    };
+
+    categorySelect.addEventListener('change', navigateToTarget);
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      navigateToTarget();
+    });
+
+    form.dataset.bound = 'true';
+  }
+
+  document.addEventListener('astro:page-load', setupHeaderSearch);
+  setupHeaderSearch();
+</script>
