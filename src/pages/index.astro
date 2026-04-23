@@ -9,6 +9,7 @@ import { courses } from '../data/courses';
 const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 const featuredProducts = getFeaturedProducts(6);
+const catalogVideoUrl = 'https://www.youtube.com/embed/uBT9iiEh62M';
 
 const roadmap = [
   'Maquinas virtuales y software con mejor narrativa comercial.',
@@ -150,6 +151,34 @@ const faqs = [
           {featuredProducts.map((product) => (
             <ProductCard product={product} />
           ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block video-section">
+      <div class="container">
+        <div class="video-feature">
+          <div class="video-feature-copy">
+            <span class="eyebrow">Resumen visual</span>
+            <h2>Video general de maquinas virtuales disponibles</h2>
+            <p>
+              Revisa en un solo video el resumen de las maquinas virtuales disponibles en DTP Automation.
+              Esta vista te ayuda a conocer mejor el catalogo antes de ir al detalle de cada entorno.
+            </p>
+          </div>
+
+          <div class="video-embed-card">
+            <div class="video-embed-shell">
+              <iframe
+                src={catalogVideoUrl}
+                title="Resumen de maquinas virtuales DTP Automation"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </section>
