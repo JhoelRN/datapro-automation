@@ -10,10 +10,12 @@ interface Props {
 }
 
 const { category } = Astro.props;
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 ---
 
 <article class="category-card">
-  <a href={`/categorias/${category.slug}/`}>
+  <a href={`${baseUrl}categorias/${category.slug}/`}>
     <div class="category-card-media">
       <img src={category.image} alt={category.label} loading="lazy" />
     </div>

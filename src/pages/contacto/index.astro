@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 ---
 
 <BaseLayout title="Contacto | DTP Automation" description="Redireccionando a Nosotros." bodyClass="site-contact">
@@ -13,7 +15,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <p class="section-copy">
             Si no eres redirigido automaticamente, puedes ir directamente a la seccion de contacto dentro de Nosotros.
           </p>
-          <a class="btn" href="/nosotros/#contacto">Ir a Nosotros</a>
+          <a class="btn" href={`${baseUrl}nosotros/#contacto`}>Ir a Nosotros</a>
         </div>
       </div>
     </section>

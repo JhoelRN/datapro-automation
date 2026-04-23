@@ -54,9 +54,13 @@ function normalizeArray(values: unknown): string[] {
   return values.map((item) => fixText(item)).filter(Boolean);
 }
 
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
+
 function toPublicPath(path: string): string {
-  if (!path) return '/assets/img/placeholder.jpg';
-  return path.startsWith('/') ? path : `/${path}`;
+  if (!path) return `${baseUrl}assets/img/placeholder.jpg`;
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${baseUrl}${cleanPath}`;
 }
 
 export const categoryLabels: Record<ProductCategory, string> = {
@@ -98,7 +102,7 @@ export const categories = (Object.keys(categoryLabels) as ProductCategory[]).map
     label: categoryLabels[slug],
     description: categoryDescriptions[slug],
     count: items.length,
-    image: items[0]?.image ?? '/assets/img/placeholder.jpg'
+    image: items[0]?.image ?? `${baseUrl}assets/img/placeholder.jpg`
   };
 });
 
@@ -143,5 +147,5 @@ export function slugify(value: string) {
 }
 
 export function getProductUrl(product: Product) {
-  return `/productos/${slugify(product.id)}/`;
+  return `${baseUrl}productos/${slugify(product.id)}/`;
 }

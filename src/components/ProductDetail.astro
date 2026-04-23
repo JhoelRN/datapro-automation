@@ -8,6 +8,8 @@ interface Props {
 const { product } = Astro.props;
 const badge = badgeLabel(product.badge);
 const galleryId = `gallery-${slugify(product.id)}`;
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 ---
 
 <section class="product-detail">
@@ -81,7 +83,7 @@ const galleryId = `gallery-${slugify(product.id)}`;
       >
         Solicitar informacion
       </a>
-      <a class="btn btn-ghost" href="/categorias/vm/">Volver a maquinas virtuales</a>
+      <a class="btn btn-ghost" href={`${baseUrl}categorias/vm/`}>Volver a maquinas virtuales</a>
     </div>
 
     <div class="product-spec-box">

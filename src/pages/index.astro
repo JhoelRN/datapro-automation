@@ -6,6 +6,8 @@ import ProductCard from '../components/ProductCard.astro';
 import { getFeaturedProducts, products } from '../data/catalog';
 import { courses } from '../data/courses';
 
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 const featuredProducts = getFeaturedProducts(6);
 
 const roadmap = [
@@ -19,46 +21,46 @@ const experience = [
     metric: `${courses.length}`,
     label: 'Cursos compartidos',
     icon: 'courses',
-    iconSrc: '/assets/img/ui/stat-courses.svg'
+    iconSrc: `${baseUrl}assets/img/ui/stat-courses.svg`
   },
   {
     metric: `${products.length}+`,
     label: 'Maquinas Virtuales',
     icon: 'machines',
-    iconSrc: '/assets/img/ui/stat-machines.svg'
+    iconSrc: `${baseUrl}assets/img/ui/stat-machines.svg`
   },
   {
     metric: '100+',
     label: 'Instaladores softwares y programas',
     icon: 'software',
-    iconSrc: '/assets/img/ui/stat-software.svg'
+    iconSrc: `${baseUrl}assets/img/ui/stat-software.svg`
   }
 ];
 
 const paymentMethods = [
   {
     name: 'PayPal',
-    image: '/assets/img/payments/paypal.png'
+    image: `${baseUrl}assets/img/payments/paypal.png`
   },
   {
     name: 'Mercado Pago',
-    image: '/assets/img/payments/mercadopago.png'
+    image: `${baseUrl}assets/img/payments/mercadopago.png`
   },
   {
     name: 'BCP',
-    image: '/assets/img/payments/bcp.png'
+    image: `${baseUrl}assets/img/payments/bcp.png`
   },
   {
     name: 'Yape',
-    image: '/assets/img/payments/yape.png'
+    image: `${baseUrl}assets/img/payments/yape.png`
   },
   {
     name: 'Plin',
-    image: '/assets/img/payments/plin.png'
+    image: `${baseUrl}assets/img/payments/plin.png`
   },
   {
     name: 'Scotiabank',
-    image: '/assets/img/payments/scotiabank.png'
+    image: `${baseUrl}assets/img/payments/scotiabank.png`
   }
 ];
 
@@ -83,6 +85,7 @@ const faqs = [
     answer: 'Formularios, testimonios, articulos tecnicos, preguntas frecuentes por producto, filtros mas avanzados, landings por tecnologia y estrategias de SEO mas profundas.'
   }
 ];
+
 ---
 
 <BaseLayout
@@ -140,7 +143,7 @@ const faqs = [
             <span class="eyebrow">Destacados</span>
             <h2>Maquinas Virtuales y Cursos</h2>
           </div>
-          <a class="btn btn-ghost" href="/categorias/vm/">Ver maquinas virtuales</a>
+          <a class="btn btn-ghost" href={`${baseUrl}categorias/vm/`}>Ver maquinas virtuales</a>
         </div>
 
         <div class="product-grid">

@@ -12,6 +12,9 @@ const {
   description = 'DTP Automation, soluciones, recursos y servicios para automatización industrial.',
   bodyClass = ''
 } = Astro.props;
+
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 ---
 
 <!doctype html>
@@ -22,7 +25,7 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <ClientRouter />
-    <link rel="icon" href="/assets/img/logo.svg" />
+    <link rel="icon" href={`${baseUrl}assets/img/logo.svg`} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

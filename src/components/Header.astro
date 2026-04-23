@@ -15,45 +15,64 @@ interface Props {
 }
 
 const { currentPath = '/' } = Astro.props;
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
+
+function withBase(path: string) {
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${baseUrl}${cleanPath}`;
+}
+
+function stripBase(path: string) {
+  if (!path) return '/';
+  if (path.startsWith(baseUrl)) {
+    const normalized = `/${path.slice(baseUrl.length)}`;
+    return normalized.replace(/\/+/g, '/');
+  }
+  return path;
+}
 
 const links: LinkItem[] = [
-  { href: '/', label: 'Inicio' },
-  { href: '/categorias/vm/', label: 'Maquinas Virtuales' },
-  { href: '/cursos/', label: 'Cursos' },
-  { href: '/servicios/', label: 'Servicios' },
-  { href: '/comunidad/', label: 'Comunidad' },
-  { href: '/nosotros/', label: 'Nosotros' }
+  { href: withBase('/'), label: 'Inicio' },
+  { href: withBase('/categorias/vm/'), label: 'Maquinas Virtuales' },
+  { href: withBase('/cursos/'), label: 'Cursos' },
+  { href: withBase('/servicios/'), label: 'Servicios' },
+  { href: withBase('/comunidad/'), label: 'Comunidad' },
+  { href: withBase('/nosotros/'), label: 'Nosotros' }
 ];
 
 const searchCategories: SearchCategory[] = [
-  { value: 'vm', label: 'Maquinas Virtuales', path: '/categorias/vm/' },
-  { value: 'software', label: 'Software', path: '/categorias/software/' },
-  { value: 'curso', label: 'Cursos', path: '/cursos/' },
-  { value: 'servicio', label: 'Servicios', path: '/servicios/' }
+  { value: 'vm', label: 'Maquinas Virtuales', path: withBase('/categorias/vm/') },
+  { value: 'software', label: 'Software', path: withBase('/categorias/software/') },
+  { value: 'curso', label: 'Cursos', path: withBase('/cursos/') },
+  { value: 'servicio', label: 'Servicios', path: withBase('/servicios/') }
 ];
 
 function isActiveLink(linkHref: string) {
-  if (linkHref === '/') return currentPath === '/';
-  return currentPath === linkHref || currentPath.startsWith(linkHref);
+  const normalizedCurrentPath = stripBase(currentPath);
+  const normalizedLinkHref = stripBase(linkHref);
+  if (normalizedLinkHref === '/') return normalizedCurrentPath === '/';
+  return normalizedCurrentPath === normalizedLinkHref || normalizedCurrentPath.startsWith(normalizedLinkHref);
 }
 
 function getCurrentSearchCategory() {
-  const matched = searchCategories.find((item) => currentPath.startsWith(item.path));
-  return matched?.path ?? '/categorias/vm/';
+  const normalizedCurrentPath = stripBase(currentPath);
+  const matched = searchCategories.find((item) => normalizedCurrentPath.startsWith(stripBase(item.path)));
+  return matched?.path ?? withBase('/categorias/vm/');
 }
 ---
 
 <header class="header site-header">
   <div class="container header-row">
-    <a class="brand" href="/" aria-label="DTP Automation">
-      <img src="/assets/img/logo.svg" alt="DTP Automation" width="48" height="48" />
+    <a class="brand" href={withBase('/')} aria-label="DTP Automation">
+      <img src={withBase('/assets/img/logo.svg')} alt="DTP Automation" width="48" height="48" />
       <div class="brand-copy">
         <strong>DTP Automation</strong>
       </div>
     </a>
 
     <div class="header-tools">
-      <form class="catalog-search catalog-search-compact" data-catalog-search-form action="/categorias/vm/" method="get">
+      <form class="catalog-search catalog-search-compact" data-catalog-search-form action={withBase('/categorias/vm/')} method="get">
         <label class="catalog-search-select-wrap">
           <span class="sr-only">Seleccionar categoria</span>
           <select class="catalog-search-select" name="category" data-catalog-search-category>
@@ -112,7 +131,7 @@ function getCurrentSearchCategory() {
     if (form.dataset.bound === 'true') return;
 
     const navigateToTarget = () => {
-      const action = categorySelect.value || '/categorias/vm/';
+      const action = categorySelect.value || form.action;
       const searchInput = form.querySelector('input[name="q"]');
       const query = searchInput instanceof HTMLInputElement ? searchInput.value.trim() : '';
       const targetUrl = query ? `${action}?${new URLSearchParams({ q: query }).toString()}` : action;
